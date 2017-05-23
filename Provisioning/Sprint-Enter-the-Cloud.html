@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Sprint: Enter the Cloud</title>
+<!-- 2017-05-23 Tue 11:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Sprint: Enter the Cloud</h1>
+<br/>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+In this sprint you learn how to seamlessly transfer your local machine setup to a cloud provider.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a developer I want to start all my machines with one command so that I don&rsquo;t forget any machines.
+</li>
+<li>As a tester I want a scripted solution for setting up a test environment to make sure that I have the same environment as the production servers.
+</li>
+<li>As owner of this company, I don&rsquo;t want to pay for buying, running, and maintaining a lot of servers that we may not need all the time.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Until now, you have worked with VirtualBox and Vagrant to set things up on your local machine. This is a cheap way to make sure that everything works and installs as you expect without having to pay for a cloud platform. Personally, I often use Vagrant to quickly set up a virtual machine just to test-install something that I am not sure that is entirely &ldquo;pukka&rdquo;. If it is ok, I may later jump through another hoop and set it up in a Docker container.
+</p>
+
+<p>
+In this sprint, you will start deploying to a cloud provider. We are going to persist in grounding you in the command line and in having a single command to get things running.
+</p>
+
+<p>
+There are of course plenty of cloud providers that support different service levels (IAAS, PAAS,  SAAS, etc.). We are going to focus on two providers in this sprint, i.e. <a href="https://www.digitalocean.com/">DigitalOcean</a> and <a href="https://aws.amazon.com/">Amazon Web Services</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+J. Rosenberg, A. Mateos, &ldquo;The Cloud at your Service&rdquo;, Manning, 2010. chapters:
+</p>
+<ol class="org-ol">
+<li value="8">Practical considerations
+</li>
+</ol>
+
+<p>
+G. Reese &ldquo;Cloud Application Architectures&rdquo;, O’Reilly, 2009. chapters:
+</p>
+<ol class="org-ol">
+<li value="2">Amazon Cloud Computing
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Further Reading</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><a href="http://www.oreilly.com/webops-perf/free/docker-in-the-cloud.csp">S. Goasguen Docker in the Cloud</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Create a DigitalOcean Cloud Account</h3>
+<div class="outline-text-3" id="text-5-1">
+</div><div id="outline-container-sec-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> Prerequisites</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<ul class="org-ul">
+<li>[optional] You have signed up for a <a href="https://education.github.com/pack">Github Education Pack</a>
+</li>
+<li>You have signed up on <a href="https://www.digitalocean.com/">DigitalOcean</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-5-1-2" class="outline-4">
+<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> Tasks</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+<b>Set up Vagrant:</b> Install the DigitalOcean and the Puppet plugins for Vagrant:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">$ vagrant plugin install vagrant-digitalocean
+</pre>
+</div>
+
+<p>
+<b>Get a Token:</b> Log in to DigitalOcean. Go to &ldquo;Apps &amp; API"/"Generate new Token&rdquo;.
+</p>
+
+<p>
+Give it the name <code>vagrant</code>, with read <i>and</i> write permissions.
+</p>
+
+<div class="note">
+<p>
+Copy/paste and SAVE the token in a safe place. You will never find it again.
+</p>
+
+</div>
+
+<p>
+<b>Generate SSH key:</b> You need an SSH key to allow vagrant to login to your new droplet. Run <code>ssh-keygen</code>, and when asked where to save the generated key answer <code>/home/youruser/.ssh/digitalocean/api_id_rsa</code>. Hit <code>Enter</code> when asked for a passphrase.
+</p>
+
+<p>
+<b>Create Vagrantfile:</b> 
+</p>
+<ul class="org-ul">
+<li>Create and enter a new directory on your computer
+</li>
+<li>Run <code>vagrant init</code> to create a new Vagrantfile
+</li>
+<li>Edit the VagrantFile:
+<ul class="org-ul">
+<li>Remove/comment the line <code>config.vm.box = base</code>
+</li>
+<li>Add the following:
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">config.vm.hostname = 'vagrant-test'
+
+config.vm.provider :digital_ocean do |provider, override|
+  override.ssh.private_key_path = '~/.ssh/digitalocean/api_id_rsa'
+  override.vm.box = 'digital_ocean'
+  override.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+
+  provider.token = 'YOUR-TOKEN'
+  provider.image = 'ubuntu-14-04-x64'
+  provider.region = 'nyc2'
+  provider.size = '512mb'
+  provider.setup = false
+end
+</pre>
+</div>
+
+<p>
+(See <a href="https://github.com/smdahlen/vagrant-digitalocean">https://github.com/smdahlen/vagrant-digitalocean</a> for an explanation of the options)
+</p>
+
+<p>
+Replace <code>YOUR-TOKEN</code> with the token you saved earlier
+</p>
+
+<p>
+<b>Test:</b>
+</p>
+<ul class="org-ul">
+<li>Run <code>vagrant up</code> and wait for DigitalOcean to create your droplet
+</li>
+<li>Run <code>vagrant ssh</code> and poke around.
+</li>
+</ul>
+
+<div class="note">
+<p>
+If you have more than one provider configuration (e.g., you may have one &ldquo;virtualbox&rdquo; provider, and one &ldquo;digitalocean&rdquo;, you may need to specify which provider to use: <code>vagrant up --provider=digital_ocean</code>.
+</p>
+
+</div>
+
+<div class="warning">
+<p>
+<b>Cleanup</b> 
+Once you are done, <i>don&rsquo;t forget</i> to run <code>vagrant destroy -f</code>!
+</p>
+
+<p>
+If you don&rsquo;t, your droplet will keep running and cost you money.
+</p>
+
+</div>
+
+<p>
+<b>Summary:</b> You have now created a Vagrant configuration that runs on a cloud provider (DigitalOcean).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Multi-Machine Setup</h3>
+<div class="outline-text-3" id="text-5-2">
+</div><div id="outline-container-sec-5-2-1" class="outline-4">
+<h4 id="sec-5-2-1"><span class="section-number-4">5.2.1</span> Prerequisites</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<ul class="org-ul">
+<li>You have signed up on <a href="https://www.digitalocean.com/">DigitalOcean</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-2-2" class="outline-4">
+<h4 id="sec-5-2-2"><span class="section-number-4">5.2.2</span> Tasks</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<p>
+Configure your <code>Vagrantfile</code> to include the following two boxes:
+</p>
+
+<ul class="org-ul">
+<li>Application server, with the hostname <code>appserver</code>
+</li>
+<li>Database server, with the hostname <code>dbserver</code>
+</li>
+</ul>
+
+<p>
+Note that you do not need to modify the <code>config.vm.provider</code> block you created previously.
+</p>
+
+<p>
+<b>Test:</b>
+</p>
+<ul class="org-ul">
+<li>Run <code>vagrant up</code> and wait for DigitalOcean to create your droplet
+</li>
+<li>Run <code>vagrant ssh</code> and poke around.
+</li>
+</ul>
+
+
+<p>
+<b>Cleanup:</b> Once you are done, don&rsquo;t forget to run <code>vagrant destroy -f</code>!
+</p>
+
+<p>
+<b>Summary:</b> You have now created a Vagrant configuration that runs two boxes on a cloud provider.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Assignment: Cloud Provisioning and Deployment</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+<b>Install Puppet:</b> By default, Puppet is not installed on DigitalOcean boxes. Run the following to install a plugin that allows Vagrant to install it on startup.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">$ vagrant plugin install vagrant-puppet-install
+</pre>
+</div>
+
+<p>
+<b>Create your Puppet manifest:</b> Provision your boxes using Puppet so that:
+</p>
+
+<ul class="org-ul">
+<li>appserver has node.js installed.
+</li>
+<li>dbserver has mysql installed and running.
+</li>
+</ul>
+
+<p>
+You ought to be able to re-use a lot of the manifest that you created in your Basic Multi-Machine Setup (in a previous Sprint).
+</p>
+
+<p>
+<b>Configure Vagrant:</b> Add the following to your Vagrantfile to install Puppet and use your manifest to provision your boxes:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">config.puppet_install.puppet_version = :latest    
+config.vm.provision :puppet
+</pre>
+</div>
+
+<p>
+<b>Test:</b> Run vagrant up and wait for DigitalOcean to create your droplets
+</p>
+
+<p>
+Make sure thay you are indeed running on DigitalOcean and not in a local VM.
+</p>
+
+<p>
+Run the following:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">$ vagrant ssh appserver -c "node --version &amp;&amp; npm --version"
+$ vagrant ssh dbserver -c "mysqlshow --user=root --password=&lt;YOUR_ROOT_PASSWORD&gt;"
+</pre>
+</div>
+
+<p>
+Run <code>vagrant ssh &lt;boxname&gt;</code> and poke around.
+</p>
+
+<p>
+<b>Cleanup:</b> Once you are done, don’t forget to run <code>vagrant destroy -f</code>! If you don’t, your droplet will keep running and cost you money.
+</p>
+
+<p>
+<b>Summary:</b> You have now created a Vagrant configuration that runs two boxes on a cloud provider, individually provisioned.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> (Optional) Deploy Elsewhere (AWS)</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Create an Amazon Web Services Account and repeat your deployment thither.
+</p>
+
+<p>
+You will need to consider whether you need any persistent storage (S3), your CPU and ephemeral storage requirements, as well as any requirements on block storage, or whether you wish to use their SimpleDB service.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Update Sprint Test Plan</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+</p>
+
+<p>
+Revisit and update your risks and contingencies section.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-6" class="outline-3">
+<h3 id="sec-5-6"><span class="section-number-3">5.6</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-6">
+<ul class="org-ul">
+<li>Running several machines on the cloud can become expensive. Are there cheaper options available, rather than creating a single VM for each role?
+</li>
+<li>Your Vagrantfile has no default settings for if you want to run it locally. How can you add this, and make sure that it mimics the settings that apply to DigitalOcean?
+</li>
+</ul>
+
+<p>
+Where do you go from here? Are there any questions that you want answered? Add them, along with a brief strategy for how to find an answer.   
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You have created a Vagrantfile that can deploy one or several machines to DigitalOcean
+</li>
+<li>You have created a Puppet manifest to provision your machines.
+</li>
+</ul>
+
+<p>
+You may also have:
+</p>
+<ul class="org-ul">
+<li>Updated your Course Backlog
+</li>
+<li>Updated your Vagrantfile so that you can also deploy to AWS.
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-05-23 Tue 11:00</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

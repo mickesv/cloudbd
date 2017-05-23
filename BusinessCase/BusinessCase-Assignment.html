@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Assignment Introduction: Cloud and Big Data Business Case</title>
+<!-- 2017-05-23 Tue 11:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Assignment Introduction: Cloud and Big Data Business Case</h1>
+<br/>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Text</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This text introduces the Cloud and Big Data Business Case assignment.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Introduction</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+In order to understand <i>how</i> to &ldquo;go cloud&rdquo;, you must first decide <i>why</i> using the cloud is your best option. This involves understanding what cloud computing is, and the perceived benefits of using the cloud (and what the alterntives are).
+</p>
+
+<p>
+In this assignment you explore these underpinnings of cloud computing, with a particular focus on big data applications, in order to gain a fundamental understanding of the business case for cloud computing.
+</p>
+
+<p>
+The assignment is structured as a series of questions that guides you through the material. Your assignment submission is in the form of an essay that answers and reasons about these questions.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Learning Material</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Book Chapters</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+J. Rosenberg, A. Mateos, &ldquo;The Cloud at your Service&rdquo;, Manning, 2010. chapters:
+</p>
+<ol class="org-ol">
+<li>What is Cloud Computing
+</li>
+<li>Understanding Cloud Classifications
+</li>
+<li>The Business Case for Cloud Computing
+</li>
+<li value="9">Cloud 9: The future of the Cloud
+</li>
+</ol>
+
+<p>
+G. Reese &ldquo;Cloud Application Architectures&rdquo;, O’Reilly, 2009. chapters:
+</p>
+<ol class="org-ol">
+<li>Cloud Computing
+</li>
+<li>Amazon Cloud Computing
+</li>
+<li>Before the Move into the Cloud
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Further Reading</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+B. Wilder, &ldquo;Cloud Architecture Patterns&rdquo;, O&rsquo;Reilly, 2012., especially chapters:
+</p>
+<ol class="org-ol">
+<li>Scalability Primer
+</li>
+<li>Horizontally Scaling Compute Pattern
+</li>
+</ol>
+
+<p>
+Other Articles:   
+</p>
+<ul class="org-ul">
+<li><a href="https://blog.meteor.com/mongodb-queries-dont-always-return-all-matching-documents-654b6594a827#.59pxgubtq">MongoDB queries don&rsquo;t always return all matching documents.</a> This is just one example of an article that explains challenges with nosql databases and their &ldquo;eventually consistent&rdquo; philosophy.
+</li>
+<li><a href="https://www.theguardian.com/technology/2017/mar/01/amazon-web-services-outage-smart-homes">Amazon Web Services Data Outage February 2017</a>. A reminder why you should harden your network by replicating data over several data centres.
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> What is Cloud Computing?</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Rosenberg discuss five principles of cloud computing, i.e.:
+</p>
+<ul class="org-ul">
+<li>Pooled Computing Resources
+</li>
+<li>Virtualised Computing Resources
+</li>
+<li>Elastic Scaling up or down
+</li>
+<li>Automatic creation and deletion of new VM&rsquo;s
+</li>
+<li>Resource usage billed only as used
+</li>
+</ul>
+
+
+<ol class="org-ol">
+<li>Briefly discuss each of these princiles. Are they necessary? What do they mean for a cloud service? What do they mean for a service using the cloud?
+</li>
+<li>Is this a complete set? Are there other [fundamental] principles that you expect for cloud computing?
+</li>
+<li>Some of these principles are based in technology, others are geared towards the cloud ownership business, and some are actually relevant for a cloud user. Moreover, some of them <i>enables</i> the other principles. Please discuss these relationships, and what this means for a cloud user.
+</li>
+<li>Elasic Scaling is one of the key principles. Please reason about the business implications of this.
+<ul class="org-ul">
+<li>Give examples of applications where a quick (within minutes) elastic scaling might be necessary.
+</li>
+<li>Give examples of applications where a slower scaling would be more relevant.
+</li>
+<li>If your application grows at a steady state, what does this mean for your scaling needs? Is &ldquo;going to the cloud&rdquo; still the best option?
+</li>
+</ul>
+</li>
+<li>Metered Billing (&ldquo;Resource usage billed only as used&rdquo;) is another one of the key principles.
+<ul class="org-ul">
+<li>Let&rsquo;s say you have an application running on three machines plus a load balancer as illustrated in Figure <a href="#fig:SimpleApp">1</a>. What would be the cost per hour, day, and month for this setup if you ran it yourself (Remember that network access, routers, and cooling etc. also cost money)?
+</li>
+<li>Explore the different licensing models on Amazon EC2. What would the same setup cost to run as a T2.large or M3.large setup?
+</li>
+<li>What are the differences between Amazon&rsquo;s &ldquo;on-demand&rdquo; and the &ldquo;Reserved Instance&rdquo;?
+</li>
+<li>Since there is loadbalancer, we may guess that this application probably uses the CPU extensively. What is Amazon&rsquo;s policies regarding CPU utilisation? Please spend some time trying to find an answer to this before &ldquo;cheating&rdquo; by reading this footnote: <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</li>
+<li>What are the consequences of Amazon&rsquo;s CPU policy on a running application?
+</li>
+<li>What can you do about it?
+</li>
+</ul>
+</li>
+</ol>
+
+
+<div id="fig:SimpleApp" class="figure">
+<p><img src="./images/FSimpleApp.png" alt="FSimpleApp.png" />
+</p>
+<p><span class="figure-number">Figure 1:</span> A Simple Example App</p>
+</div>
+
+
+
+<ol class="org-ol">
+<li value="6">Different cloud providers offer different services  (x As A Service).
+<ul class="org-ul">
+<li>Briefly describe each of <code>Software As A Service</code>, <code>Framework As A Service</code>, <code>Platform As A Service</code>, and <code>Infrastructure As A Service</code>.
+</li>
+<li>Give examples of applications that use each of these.
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Reasons for &ldquo;Going to the Cloud&rdquo;</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Adopting a cloud solution is often touted for economic reasons &#x2013; the metered billing aspect is particularly attractive for many companies[<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>.
+</p>
+
+<p>
+From a technical perspective, the reasons are more geared towards quality attributes. ISO/IEC 25010:2011 (the successor of ISO 9126) lists the following quality attributes: 
+</p>
+<ul class="org-ul">
+<li>Functional Suitability
+<ul class="org-ul">
+<li>Functional Completeness
+</li>
+<li>Functional Correctness
+</li>
+<li>Functional Appropriateness
+</li>
+</ul>
+</li>
+<li>Performance Efficiency
+<ul class="org-ul">
+<li>Time-Behaviour
+</li>
+<li>Resource Utilisation
+</li>
+<li>Capacity
+</li>
+</ul>
+</li>
+<li>Compatibility
+<ul class="org-ul">
+<li>Co-existence
+</li>
+<li>Interoperability
+</li>
+</ul>
+</li>
+<li>Usability
+<ul class="org-ul">
+<li>Appropriateness
+</li>
+<li>Recognisability
+</li>
+<li>Learnability
+</li>
+<li>Operability
+</li>
+<li>User error protection
+</li>
+<li>User interface aesthetics
+</li>
+<li>Accessibilty
+</li>
+</ul>
+</li>
+<li>Reliability
+<ul class="org-ul">
+<li>Maturity
+</li>
+<li>Availability
+</li>
+<li>Fault tolerance
+</li>
+<li>Recoverability
+</li>
+</ul>
+</li>
+<li>Security
+<ul class="org-ul">
+<li>Confidentiality
+</li>
+<li>Integrity
+</li>
+<li>Non-repudiation
+</li>
+<li>Accountability
+</li>
+<li>Authenticity
+</li>
+</ul>
+</li>
+<li>Maintainability
+<ul class="org-ul">
+<li>Modularity
+</li>
+<li>Reusability
+</li>
+<li>Analysability
+</li>
+<li>Modifiability
+</li>
+<li>Testability
+</li>
+</ul>
+</li>
+<li>Portability
+<ul class="org-ul">
+<li>Adaptability
+</li>
+<li>Installability
+</li>
+<li>Replaceability
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+<ol class="org-ol">
+<li>Which of these may be a reason for moving towards a cloud solution (Pick the top five)? Please motivate your answers.
+</li>
+<li>Elastic Scale (and Scale in general) is one of the previously discussed key principles, but scale with respect to what?
+</li>
+<li>In what way does a cloud solution address usability?
+</li>
+<li>In what way can a cloud solution address security and all its sub-attributes?
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Scalable Software Architectures</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+A small selection of different types of applications are described below. For each of these application types:
+</p>
+
+<ol class="org-ol">
+<li>Reason about which the most important quality attributes might be for the type of system.
+</li>
+<li>Reason about a software architecture that can be used to implement the type of system in a scalable way. What does &ldquo;scalable&rdquo; mean?
+</li>
+<li>Reason about how to also ensure Availability and Reliability in the type of system.
+</li>
+<li>Reason about how to ensure efficient, scalable, and sufficiently reliable storage of data.
+</li>
+</ol>
+
+<div class="info">
+<p>
+<b>System Type: Computing Jobs</b>
+This system works on the principle that a large chunk of data is made available and a number of computing-intensive tasks should be performed on the data. These computations can be dependent on each other (First, do <i>A</i>, then do <i>B</i>), or independent. Moreover, the computations may require access to the entire dataset, or they may be able to work on smaller portions of the data.
+</p>
+
+<p>
+<b>System Type: Computing Stream</b>   
+This system is similar to the &ldquo;Computing Jobs&rdquo; system, except that data arrives continuously instead of as large chunks. Obviously, this means that computations work on individual portions of the data. It may also mean that the computations are run in sequence <code>A -&gt; B -&gt; C</code> for each chunk of data. <i>However</i>, it may also mean that you have a large number of streams to process in parallel.
+</p>
+
+<p>
+<b>System Type: User Silos</b>   
+This system is a system where end-users interact with the system to perform a task. This may be a session-based task that consists of more than several steps, and the system must appear responsive for each individual user. However, there is little interaction between different users; each user experience the system as if they were currently alone on it.
+</p>
+
+<p>
+<b>System Type: User Silos with Post-Processing</b>   
+Similar to &ldquo;User Silos&rdquo;, but during one session a user may kick off one or several tasks involving considerable amounts of computations or data processing. The key here is that these tasks need not be interactive in nature &#x2013; the results can be reported back to the users asynchronously (indeed, it may not even be the user that is the recipient of the tasks&rsquo; results).
+</p>
+
+<p>
+<b>System Type: Networks of Users</b>   
+In this type of system, the user interacts with a network of other users in realtime. When one user makes some information available, it should be made available to all other users concurrently. To &ldquo;make information available&rdquo; may require processing by the system (for example parsing the input format and translating it to desired formats for viewing). Each individual processing task may not be very intensive, but with a large number of concurrent users the amount of required processing power adds up. In this type of system a balance need to be struck between pushing processing back to the users&rsquo; devices and processing server-side. Pushing processing back to the clients may mean larger network transfers, and increased energy consumption on the client devices (which may be mobile devices).
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Filesystems</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+Consider again the simple application in Figure <a href="#fig:SimpleApp">1</a>. In this example there is a single database that serves both instances of the application. But what about other data that does not fit into a usual database, such as binary files, or even whole filesystems? For this, you essentially have three options:
+</p>
+
+<ol class="org-ol">
+<li>A self-administered networked filesystem. This requires that one of your hosts is designated as filesystem server.
+</li>
+<li>A cloud-based networked filesystem. Some cloud providers also offer online storage facilities.
+</li>
+<li>A self administered distributed filesystem that is synchronised across your hosts.
+</li>
+</ol>
+
+<p>
+<b>Questions:</b>
+</p>
+<ol class="org-ol">
+<li>Briefly describe the advantages and disadvantages of each of these options.
+</li>
+<li>Briefly describe each of the storage solutions below and list benefits and liabilities<sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>:
+<ul class="org-ul">
+<li>Hadoop HDFS
+</li>
+<li>GlusterFS
+</li>
+<li>Amazon S3
+</li>
+<li>Amazon Glacier
+</li>
+<li>Google Cloud Storage
+</li>
+</ul>
+</li>
+<li>What are the security implications of using Amazon S3?
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> Databases</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+For the database, today the choice is essentially between an SQL database and a NoSQL database, where NoSQL has received quite some hype in recent years (A third option is Graph databases, but these are much less common and/or popular).
+</p>
+
+<ol class="org-ol">
+<li>Briefly discuss the basic principles of NoSQL databases.
+</li>
+<li>What are the benefits of a NoSQL database over an SQL database?
+</li>
+<li>Give three examples of data where a NoSQL database is the most suitable storage alternative. Motivate your answer.
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> Security in the Cloud</h3>
+<div class="outline-text-3" id="text-4-6">
+<ol class="org-ol">
+<li>Please discuss the security <i>benefits</i> of cloud computing.
+</li>
+<li>Please discuss the security <i>liabilities</i> of cloud computing.
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-4-7" class="outline-3">
+<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Assignment Submission</h3>
+<div class="outline-text-3" id="text-4-7">
+<ul class="org-ul">
+<li>Submit your essay to the teachers for marking.
+</li>
+<li>The teacher may want to book a time with you to further discuss your sumbission.
+</li>
+</ul>
+
+<div class="tip">
+<p>
+<b>Conditions of Satisfaction</b>
+</p>
+
+<p>
+When marking the assignment we are looking for the following:
+</p>
+
+<ol class="org-ol">
+<li value="0">Does the title page contain name and contact information of the author?
+</li>
+<li>Size of the assignment: Is the essay between 5-10 pages?
+</li>
+<li>Are all questions addressed?
+</li>
+<li>Are all answers motivated?
+</li>
+<li>Is the student able to both summarise existing literature and relate to own experiences?
+</li>
+<li>Is the student able to connect and discuss different sources and viewpoints on each topic?
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Acceptance Tests</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+You are done with this assignment when:
+</p>
+<ul class="org-ul">
+<li><img src="./org/checked.png" alt="checked.png" /> You have submitted your essay to a teacher for review.
+</li>
+<li>You have received a passing grade from the teacher.
+</li>
+</ul>
+
+<p>
+You may also:
+</p>
+<ul class="org-ul">
+<li>have had a meeting with the teacher to further discuss your submission.
+</li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>The answer is that Amazon uses something they call <i>CPU credits</i> to throttle your application if it uses too much CPU. (Some) more information can be found here: <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html">http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html</a> .</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>To be precise, metered billing is <i>perceived</i> to be attractive for companies <i>by authors of books about cloud computing</i>.</p></div>
+
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p>Please see <a href="https://en.wikipedia.org/wiki/Comparison_of_distributed_file_systems">https://en.wikipedia.org/wiki/Comparison_of_distributed_file_systems</a> for more options</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-05-23 Tue 11:00</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
