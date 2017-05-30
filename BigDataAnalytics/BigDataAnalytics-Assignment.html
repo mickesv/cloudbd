@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Assignment Introduction: Big Data Analytics</title>
+<!-- 2017-05-30 Tue 14:52 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../org/org.css" />
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<link rel="stylesheet" type="text/css" href="/org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Assignment Introduction: Big Data Analytics</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Text</a></li>
+<li><a href="#sec-2">2. Introduction</a>
+<ul>
+<li><a href="#sec-2-1">2.1. What are code clones and why should I care?</a></li>
+<li><a href="#sec-2-2">2.2. The code clone detection process</a></li>
+<li><a href="#sec-2-3">2.3. Ok, I see the &lsquo;data&rsquo; but where is the &lsquo;big&rsquo;?</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. <span class="todo TODO">TODO</span> Learning Material</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Further Reading</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Experiential Learning</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Assignment Sprints</a></li>
+<li><a href="#sec-4-2">4.2. Assignment Submission</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Text</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This text introduces the Big Data Analytics assignment.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Introduction</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Every endeavour into the realm of data science should start with a
+question. That question must:
+</p>
+<ul class="org-ul">
+<li>provide value to some stakeholder, and
+</li>
+<li>be answerable by analytical, quanitative means.
+</li>
+</ul>
+
+<p>
+Since this course is targeted at Software Engineers, the question we are trying
+to answer in this assignment is related to a software engineering phenomenon:
+<i>code clones</i>. In particular, we are asking the question: 
+<b>How many code clones does a particular set of source code files contain?</b> 
+</p>
+
+<p>
+In the remainder of this section, we discuss the value an answer to this
+question might provide and how this question can be answered by analytical
+means.
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> What are code clones and why should I care?</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+A code clone is a piece of code that is duplicated in one or more places within
+a set of source code files. Typically, code clones are created by copying pieces
+of code with little or no modifications in order to replicate some
+functionality. The figure below shows such a code clone.
+</p>
+
+
+<div class="figure">
+<p><img src="./images/NUnitClone.png" alt="NUnitClone.png" />
+</p>
+</div>
+
+<p>
+This clone is not an <i>exact</i> clone. While the structure and logic of the code is
+equivalent, variable- and methodnames differ. Furthermore, the left side
+contains commented code that does not exist on the right side. In general, we
+distinguish between 4 <i>types</i> of code clones [<a href="#1">1</a>]:
+</p>
+
+<dl class="org-dl">
+<dt> Type-1: </dt><dd>Identical code fragments except for variations in whitespace,
+layout and comments.
+</dd>
+<dt> Type-2: </dt><dd>Syntactically identical fragments except for variations in
+identifiers, literals, types, whitespace, layout and comments.
+</dd>
+<dt> Type-3: </dt><dd>Copied fragments with further modifications such as changed, added
+or removed statements, in addition to variations in identifiers,
+literals, types, whitespace, layout and comments.
+</dd>
+<dt> Type-4: </dt><dd>Two or more code fragments that perform the same computation but
+are implemented by different syntactic variants.
+</dd>
+</dl>
+
+<p>
+But why are code clones a problem? Imagine you need to extend the code shown in
+the above figure, for example by letting the user change the directory before
+creating it. You would have to introduce that change in two places (or more, who
+knows?) and test both. Another scenario is that you identify a bug in the above
+code but are unaware that the code (and the bug) is replicated somewhere
+else. Having a code clone detector would be handy in both cases. Once the clones
+are identified, there are two main strategies on how to handle the problem: 
+</p>
+
+<ol class="org-ol">
+<li>refactor the code such that the functionality is not duplicated 
+</li>
+<li>maintain a registry of code clones that can be used to lookup clones when changes to the code
+are made
+</li>
+</ol>
+
+<p>
+Note however that code clones are not <i>per se</i> a design flaw to avoid at all
+costs. As often in engineering, the decision on how to handle a problem depends on the
+particular situation, code clones not being an exception. You might find the work by
+Kapser and Godfrey useful as they identify code clone patterns, describe their
+advantages/disadvantages, long term issues and provide advice on how to manage
+them [<a href="#2">2</a>].
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> The code clone detection process</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+The tasks in this assignment are based upon extending and improving an existing
+code clone detector (ClonyMcCloneface will be introduced in Sprint
+Clones101). The detector you will working on is following the generic detection
+process shown in the figure below (cloned from [<a href="#1">1</a>]). 
+</p>
+
+
+<div class="figure">
+<p><img src="./images/detection_process.png" alt="detection_process.png" />
+</p>
+</div>
+
+<p>
+Every clone detector (Roy et al. review more than 40 [<a href="#1">1</a>]) implements this
+generic process. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Ok, I see the &lsquo;data&rsquo; but where is the &lsquo;big&rsquo;?</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+The data you will be analysing is source code (even though the principle of
+clone detection can be applied to any data). Concretely, you will work with the
+<a href="http://qualitascorpus.com">Qualitas Corpus</a> which contains the source code of 112 software
+systems. Unpacked, the corpus contains ~10GB of data. You might argue that this
+is by no means Big Data (in terms of volume, but it is also static and quite
+homogeneous). On the other hand, the data in the corpus is just big enough to
+make its analysis painstakingly slow or even impossible on a single machine.
+</p>
+
+<p>
+In this assignment you&rsquo;ll work with data that is just big enough to make you
+think about finding more efficient ways on how to analyse it.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Learning Material</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Further Reading</h3>
+<div class="outline-text-3" id="text-3-1">
+<ol class="org-ol">
+<li>C. K. Roy, J. R. Cordy, and R. Koschke, &ldquo;Comparison and evaluation of code
+clone detection techniques and tools: A qualitative approach,&rdquo; Science of
+Computer Programming, vol. 74, no. 7, pp. 470–495, 2009. <a id="1" name="1"></a>
+</li>
+<li>Kapser, Cory J., and Michael W. Godfrey. &ldquo;&rsquo;Cloning considered harmful&rsquo;
+considered harmful: patterns of cloning in software.&rdquo; Empirical Software
+Engineering 13.6 (2008): 645. <a id="2" name="2"></a>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Assignment Sprints</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+The assignment is organised as a set of sprints.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Name</th>
+<th scope="col" class="left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><a href="./Sprint-The-Clone-Wars.html">The Clone Wars</a></td>
+<td class="left">Introduces ClonyMcCloneface, the clone detection algorithm and its shortcomings</td>
+</tr>
+
+<tr>
+<td class="left"><a href="./Sprint-A-New-Hope.html">A New Hope</a></td>
+<td class="left">Rethink the detection algorithm, encounter new roadblocks</td>
+</tr>
+
+<tr>
+<td class="left"><a href="./Sprint-Return-of-the-Jedi.html">Return of the Jedi</a></td>
+<td class="left">An introduction to the map/reduce paradigm</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Assignment Submission</h3>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Acceptance Tests</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-05-30 Tue 14:52</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
