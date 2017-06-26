@@ -1,0 +1,1295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Sprint: Setting up Hadoop</title>
+<!-- 2017-06-26 Mon 13:30 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../org/org.css" />
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<link rel="stylesheet" type="text/css" href="/org/org.css" />
+<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-100681577-1', 'auto');  ga('send', 'pageview');</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Sprint: Setting up Hadoop</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Your mission, should you choose to accept it</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Learning Material</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Further Reading</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Experiential Learning</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Hadoop Standalone mode</a>
+<ul>
+<li><a href="#sec-5-1-1">5.1.1. Create a new Vagrant machine and Provision it</a></li>
+<li><a href="#sec-5-1-2">5.1.2. Install Hadoop</a></li>
+<li><a href="#sec-5-1-3">5.1.3. Run a MapReduce job</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-2">5.2. Hadoop Pseudo-Distributed Mode</a>
+<ul>
+<li><a href="#sec-5-2-1">5.2.1. Edit Hadoop Configuration Files</a></li>
+<li><a href="#sec-5-2-2">5.2.2. Setup Passphraseless SSH</a></li>
+<li><a href="#sec-5-2-3">5.2.3. Setup and Start HDFS</a></li>
+<li><a href="#sec-5-2-4">5.2.4. Run a MapReduce Job</a></li>
+<li><a href="#sec-5-2-5">5.2.5. Configure YARN</a></li>
+<li><a href="#sec-5-2-6">5.2.6. Re-Run MapReduce Job</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-3">5.3. Hadoop Fully Distributed Mode</a>
+<ul>
+<li><a href="#sec-5-3-1">5.3.1. Edit the Vagrantfile</a></li>
+<li><a href="#sec-5-3-2">5.3.2. Configure Hadoop</a></li>
+<li><a href="#sec-5-3-3">5.3.3. Create Puppet Provisioning</a></li>
+<li><a href="#sec-5-3-4">5.3.4. Provision to start Hadoop</a></li>
+<li><a href="#sec-5-3-5">5.3.5. Re-Run MapReduce Job</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-4">5.4. Sprint Test Plan</a></li>
+<li><a href="#sec-5-5">5.5. Assignment Submission</a></li>
+<li><a href="#sec-5-6">5.6. Update Course Backlog</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This sprint briefly introduces Hadoop, and instructs you on how to install it.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+As a Big Data developer I need a tool that is able to scale seamlessly so that I can focus on the actual Big Data problem instead of the infrastructure.
+As a potential Hadoop user I will scream if I have to read yet another &ldquo;get started with Hadoop&rdquo; tutorial based on the same original source that stops just short of getting a proper clustered solution to work.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The &ldquo;four V&rsquo;s&rdquo; of Big Data (Volume, Velocity, Variety, and Value) impose challenges for how to work with the data. Specifically, you need scalable storage, and you need a computing paradigm for seamlessly processing large volumes of data.
+</p>
+
+<p>
+<a href="http://hadoop.apache.org/">Apache&rsquo;s Hadoop</a> is one such framework that provides a basic infrastructure for this. Hadoop consists, at its core, of four modules:
+</p>
+
+<dl class="org-dl">
+<dt> Hadoop Common </dt><dd>Java libraries used by the other Hadoop modules.
+</dd>
+<dt> Hadoop Distributed File System (HDFS) </dt><dd>Just what the name says. HDFS also provides block-based replication to introduce a certain amount of redundancy.
+</dd>
+<dt> Hadoop YARN </dt><dd>Yet Another Resource Negotiator manages the available resources in a distributed computing platform and allocates jobs to specific nodes.
+</dd>
+<dt> Hadoop MapReduce </dt><dd>These days, MapReduce is based on YARN and provides one (of many) framework for parallel computation.
+</dd>
+</dl>
+
+<p>
+Other parts of the Hadoop ecosystem include:
+</p>
+<dl class="org-dl">
+<dt> Ambari </dt><dd>A web-based tool for provisioning and managing Hadoop clusters.
+</dd>
+<dt> Avro </dt><dd>A data serialization system (for serializing and deserializing records to storage)
+</dd>
+<dt> Cassandra </dt><dd>A distributed database
+</dd>
+<dt> Chukwa </dt><dd>A monitoring tool for distributed systems (large scale collection and analysis of logs)
+</dd>
+<dt> HBase </dt><dd>Another distributed database
+</dd>
+<dt> Hive </dt><dd>Data warehousing software, to access and query data on HDFS or HBase
+</dd>
+<dt> Mahout </dt><dd>A machine learning and data mining library
+</dd>
+<dt> Pig </dt><dd>A platform with a high-level language for expressing and evaluating data analysis programs
+</dd>
+<dt> Spark </dt><dd>A large-scale data processing engine
+</dd>
+<dt> Tez </dt><dd>A tool for setting up larger jobs consisting of a number of smaller jobs (e.g. MapReduce jobs) in a directed acyclic graph.
+</dd>
+<dt> Zookeper </dt><dd>An orchestration tool for distributed systems
+</dd>
+</dl>
+
+<p>
+Setting up a core Hadoop cluster is primarily concerned with setting up HDFS and YARN so that they work properly with a cluster of computers and with each other. Other services (such as MapReduce) are then run with the help of this underlying infrastructure,
+</p>
+
+<p>
+In its origin, mapreduce is a computing paradigm which has existed for quite some time. Old Lisp-programmers, for example, are inherently familiar with this way of applying a given function to each element in a list (map), and then aggregating the outcomes of these function applications to a resulting list (reduce). Because mapreduce abstracts away from the need to iterate over a list, maintaining and checking stop conditions, etc., and because the given function is specifically intended to work on a single element in the original list, the mapreduce paradigm opens up for transparent parallelisation, and this is what Hadoop MapReduce leverages on. In Hadoop MapReduce, a job is broken down into three phases:
+</p>
+
+<dl class="org-dl">
+<dt> Map </dt><dd>Filter and process the input and break it down to relevant &lt;key/value&gt; pairs. This can be done in parallel on different subsets of the input, and the output is written to temporary storage on HDFS.
+</dd>
+<dt> Shuffle </dt><dd>Redistribute the work based on the output keys. All values for each key is (potentially) assigned to one worker node for furhter processing.
+</dd>
+<dt> Reduce </dt><dd>Each worker node now focuses (in parallel) on the values for a single key, and process this as required. An implicit fourth phase consolidates the output from each worker node into a single output for the entire job.
+</dd>
+</dl>
+
+<p>
+Once a Hadoop cluster is deployed, creating a MapReduce job consists of a small set of tasks:
+</p>
+
+<ul class="org-ul">
+<li>understand how the problem can be viewed as a series of map/reduce tasks
+</li>
+<li>putting the input into HDFS
+</li>
+<li>writing Java code for the specific <code>Map()</code> and <code>Reduce()</code> tasks. 
+</li>
+</ul>
+
+<p>
+Hadoop takes care of the rest (i.e. getting the input and splitting it into reasonable chunks, distributing this to a set of worker nodes, calling your <code>Map()</code> function with the data, storing the output &lt;key/values&gt; in a temp storage, shuffling, calling your <code>Reduce()</code> function with one key at the time, consolidating the output and writing it to HDFS). 
+</p>
+
+<p>
+In particular because of HDFS, Hadoop is touted to be <i>fast</i>, <i>scalable</i>, and <i>resilient to failure</i>. I suppose this is true, if you have set up replication across the nodes such that the files you need to access during a job are close at hand (i.e. on the same node as your job is running). It is important to bear in mind, though, that there are cases when HDFS is a good idea, and other cases where it is not the best option. Specifically, use HDFS when you have <i>very large files</i> and/or <i>streaming data access</i>. Conversely, do not use HDFS when you need to access the data with <i>low latency</i>, you have <i>lots of small files</i>, or when you need to <i>write often</i>.
+</p>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Your mission, should you choose to accept it</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+In other parts of this course, you focus more on solving a Big Data problem with the help of Hadoop MapReduce. The focus of this Sprint, however, is to set up a working Hadoop cluster. Since you will be setting up this cluster as a set of virtual machines this will not enable you to leverage any parallelicity, so you will eventually be running against a pre-configured Hadoop cluster on a small set of worker nodes in my office. Configuring and deploying a Hadoop cluster is, however, an important &#x2013; if frustrating &#x2013; experience if you aim to run any further Big Data analysis on your own.
+</p>
+
+<p>
+You will be using <a href="https://www.vagrantup.com/">Vagrant</a> as in the previous Provisioning and Deployment Sprints. This enables you to easily deploy your cluster to e.g. DigitalOcean or Amazon. You will start out small, but will eventually desire the flexibility offered by <a href="https://puppet.com/">Puppet</a> for provisioning the cluster. Granted, this means that you have three sources of complexity (Vagrant, Puppet, and Hadoop), which makes debugging a nightmare, but the end result is so much more flexible and reusable.
+</p>
+
+<p>
+Hadoop MapReduce can be run in three different modes, and you will try out each of them:
+</p>
+<dl class="org-dl">
+<dt> Standalone </dt><dd>This does not require HDFS or Yarn. Basically you run the MapReduce job on a single computer.
+</dd>
+<dt> Pseudo-Distributed </dt><dd>In this mode you set up HDFS and (eventually) YARN to work on a single computer. This is useful for testing purposes.
+</dd>
+<dt> Fully Distributed </dt><dd>In this mode you extend the Pseudo-Distributed mode with more computers and setup HDFS and YARN so that they may work with all of these computers.
+</dd>
+</dl>
+
+
+<p>
+Specifically there are a few basic tasks that need to be done, with variations, for each of these modes:
+</p>
+
+<ul class="org-ul">
+<li>Create a Virtual Machine
+</li>
+<li>Install Java
+</li>
+<li>Install Hadoop
+</li>
+<li>Setup Hadoop (and SSH) for the particular mode
+</li>
+<li>(For Pseudo and Fully Distributed Mode) Start Hadoop
+<ul class="org-ul">
+<li>Populate HDFS with basic directory structure
+</li>
+<li>Start HDFS (Namenodes and Datanodes)
+</li>
+<li>Start Yarn
+</li>
+</ul>
+</li>
+<li>Test your setup
+<ul class="org-ul">
+<li>Run an example MapReduce job
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+The configurations that you create in this sprint <a href="https://github.com/mickesv/Hadoop-Setup">are available in a Githib Repository</a>. Please try to solve the task yourself before &ldquo;cheating&rdquo; by looking at this repository.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Further Reading</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+There are plenty of tutorials for setting up Hadoop, easily found through your favourite search engine. You should be aware that
+</p>
+<ul class="org-ul">
+<li>Many of them are for older versions of Hadoop. The names of settings, and the scripts to run, have changed.
+</li>
+<li>Some of them are based on a specific infrastructure around Hadoop. In particular, the ones from Cloudera and &#x2013; to some extent &#x2013; the ones from Hortonworks assume that you use their infrastructure. There is nothing wrong with these infrastructures, but they may get into the way if you want a headless one-click setup inside a virtual machine.
+</li>
+<li>Most of the tutorials are based on the same original tutorial provided by Apache. This means that the only thing they add to the official documentation is advertisement revenues to the blog publisher. They also tend to stop short of actually running MapReduce on a full cluster solution, so most of the detective work is left as an exercise to the reader.
+</li>
+</ul>
+
+
+<p>
+Official guides from Apache (For the lastest Hadoop version (3.0.0-alpha3 at the time of writing):
+</p>
+<ul class="org-ul">
+<li><a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SingleCluster.html">Hadoop: Setting up a Single Node Cluster</a>
+</li>
+<li><a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html">Hadoop Cluster Setup</a>
+</li>
+<li><a href="https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html">MapReduce Tutorial</a>
+</li>
+</ul>
+
+<p>
+Slightly older versions, for Hadoop version 2.8.0:
+</p>
+<ul class="org-ul">
+<li><a href="https://hadoop.apache.org/docs/r2.8.0/hadoop-project-dist/hadoop-common/SingleCluster.html">Hadoop 2.8.0: Setting up a Single Node Cluster</a>
+</li>
+<li><a href="https://hadoop.apache.org/docs/r2.8.0/hadoop-project-dist/hadoop-common/ClusterSetup.html">Hadoop 2.8.0 Cluster Setup</a>
+</li>
+<li><a href="https://hadoop.apache.org/docs/r2.8.0/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html">MapReduce 2.8.0 Tutorial</a>
+</li>
+</ul>
+
+
+<p>
+Other tutorials of (some) value
+</p>
+<ul class="org-ul">
+<li><a href="https://dzone.com/articles/setting-hadoop-virtual-cluster">Setting up a Hadoop Virtual Cluster With Vagrant (and Puppet)</a>
+</li>
+<li><a href="http://www.alexjf.net/blog/distributed-systems/hadoop-yarn-installation-definitive-guide/">Hadoop YARN Installation: The Definitive Guide</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Hadoop Standalone mode</h3>
+<div class="outline-text-3" id="text-5-1">
+</div><div id="outline-container-sec-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> Create a new Vagrant machine and Provision it</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<p>
+Get started by executing the following commands:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">mkdir hadoop-test
+cd hadoop-test
+vagrant init hashicorp/precise64
+</pre>
+</div>
+
+<p>
+This will create an initial Vagrantfile based on an bare <code>Ubuntu 12.04 LTS</code> image.
+</p>
+
+<p>
+You will want to increase the default amount of memory, and at least have Java available before you continue, so add the following to the Vagrantfile right before the last <code>end</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">config.vm.provider "virtualbox" do |vb|
+  # Display the VirtualBox GUI when booting the machine
+  # vb.gui = true
+
+  # Customize the amount of memory on the VM:
+  vb.memory = "1024"
+end
+
+config.vm.provision "shell", inline: &lt;&lt;-SHELL
+    sudo apt-get update
+    sudo apt-get install -y openjdk-7-jdk
+    echo "export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64" &gt;&gt; /home/vagrant/.bashrc
+SHELL
+</pre>
+</div>
+
+<p>
+Start the machine, ssh into it, and verify that your Java installation worked. Please note that you need at least Java 1.7 to get Hadoop to work:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">vagrant up &amp;&amp; vagrant ssh
+java -version
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-1-2" class="outline-4">
+<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> Install Hadoop</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+While still in your virtual machine, it is time to install Hadoop. I prefer to setup a few environment variables first, and these will be reusable for any script you decide to use. Create the file <code>/vagrant/hadoop-common.sh</code> :
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">#!/usr/bin/env bash
+
+export HADOOP_VER=hadoop-2.8.0
+export HADOOP_ROOT_ROOT=/usr/local
+export HADOOP_ROOT=$HADOOP_ROOT_ROOT/hadoop
+export HADOOP_HOME=$HADOOP_ROOT
+export HADOOP_PREFIX=$HADOOP_HOME
+
+export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin 
+
+# Set further environment variables (Strictly not necessary yet, but will be for Pseudo-mode)
+export HADOOP_MAPRED_HOME=$HADOOP_HOME 
+export HADOOP_COMMON_HOME=$HADOOP_HOME 
+export HADOOP_HDFS_HOME=$HADOOP_HOME 
+export YARN_HOME=$HADOOP_HOME 
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native 
+export HADOOP_INSTALL=$HADOOP_HOME
+
+export HADOOP_LOG_DIR=/tmp/hadoop-logs
+</pre>
+</div>
+
+<p>
+Then perform the actual install of Hadoop (file <code>/vagrant/hadoop-download.sh</code>):
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">#!/usr/bin/env bash
+
+source hadoop-common.sh
+
+# Check if run as root
+if [ "$(id -u)" != "0" ] ; then
+    echo "Please use sudo for this script"
+    exit 1
+fi
+
+# Get and unzip Hadoop
+# -----
+if [ ! -d "$HADOOP_HOME" ] ; then
+    sudo mkdir -p "$HADOOP_ROOT"
+    pushd "$HADOOP_ROOT"
+    wget http://www-eu.apache.org/dist/hadoop/common/$HADOOP_VER/$HADOOP_VER.tar.gz
+    tar -zxf $HADOOP_VER.tar.gz
+    rm $HADOOP_VER.tar.gz
+    mv $HADOOP_VER/* $HADOOP_ROOT    
+    popd
+
+    echo "source /vagrant/hadoop-common.sh" &gt;&gt; ~/.bashrc
+else
+    echo "Not installing $HADOOP_VER in $HADOOP_ROOT Reason: Hadoop is already installed."
+fi
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-1-3" class="outline-4">
+<h4 id="sec-5-1-3"><span class="section-number-4">5.1.3</span> Run a MapReduce job</h4>
+<div class="outline-text-4" id="text-5-1-3">
+<p>
+Use one of the built-in example mapreduce jobs to further test that everything works as intended. Hadoop comes with a jar-file with a number of simple mapreduce jobs, some of which can be run in standalone mode. Most tutorials seem to focus on the <code>wordcount</code> example, using some text-files that come shipped with Hadoop:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">mkdir input
+
+cp $HADOOP_HOME/*.txt input
+
+hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar wordcount input output
+
+cat output/*
+</pre>
+</div>
+
+<div class="note">
+<p>
+For a list of the included examples, run the hadoop command without any additional parameters:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar
+</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Hadoop Pseudo-Distributed Mode</h3>
+<div class="outline-text-3" id="text-5-2">
+</div><div id="outline-container-sec-5-2-1" class="outline-4">
+<h4 id="sec-5-2-1"><span class="section-number-4">5.2.1</span> Edit Hadoop Configuration Files</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<p>
+There are a number of files that need to be touched to reconfigure Hadoop to run in pseudo-mode. Specifically, you need to set the following properties (files are found under <code>$HADOOP_HOME/etc/hadoop/</code>):
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">File</th>
+<th scope="col" class="left">Property Name</th>
+<th scope="col" class="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">core-site.xml</td>
+<td class="left">fs.defaultFS</td>
+<td class="left">localhost</td>
+</tr>
+
+<tr>
+<td class="left">hdfs-site.xml</td>
+<td class="left">dfs.replication</td>
+<td class="left">1</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+The file <code>$HADOOP_HOME/etc/hadoop/hadoop-env.sh</code> also needs some TLC:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export HADOOP_LOG_DIR=/tmp/hadoop-logs
+</pre>
+</div>
+
+<p>
+I can rant a bit about why the names of properties change without a corresponding change in the major release number since this is an obviously API breaking change, why these values are not set by default, and why XML is a really bad idea for these types of configuration changes since it makes it very difficult to automate an installation. But I won&rsquo;t since there is a simple workaround for at least the last problem.
+</p>
+
+
+<div class="figure">
+<p><img src="./images/IXML_edit_meme.jpg" alt="IXML_edit_meme.jpg" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-2" class="outline-4">
+<h4 id="sec-5-2-2"><span class="section-number-4">5.2.2</span> Setup Passphraseless SSH</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<p>
+Hadoop needs to be able to ssh without a passphrase:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+chmod 0600 ~/.ssh/authorized_keys
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-2-3" class="outline-4">
+<h4 id="sec-5-2-3"><span class="section-number-4">5.2.3</span> Setup and Start HDFS</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<p>
+You are now ready to get the HDFS filesystem up and running. There are two components in this, a <code>namenode</code>, and a (one for now, more will be added when you go fully distribtued) <code>datanode</code>. The <code>hdfs namenode -format</code> command will create the directory under <code>/tmp</code>. For now, this is ok, but you may run into troubles if you later decide to restart your VM, since <code>/tmp</code> is scrubbed for old files on startup (it may even be mounted in RAM).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">hdfs namenode -format
+start-dfs.sh
+</pre>
+</div>
+
+<p>
+Grrreat. So now you have the HDFS file system available at port 9000, and a web interface at port 50070 <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>. Trouble is, your VM is not yet configured to expose these ports, so you cannot view the filesystem from outside the VM. Edit your <code>Vagrantfile</code> and add the following lines:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">config.vm.network :forwarded_port, guest: 50070, host: 50070 # NameNode web interface
+config.vm.network :forwarded_port, guest: 8088, host: 8088   # YARN web interface
+</pre>
+</div>
+
+<p>
+And then reload your VM:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">host$ vagrant reload
+</pre>
+</div>
+
+<p>
+The problem is, this will also restart your VM and hence clear your <code>/tmp</code> directory, as discussed above. Hopefully, you have scripted everything up to this point so you have a one-command solution to get back to the same point.
+</p>
+
+<p>
+Go ahead and <a href="http://localhost:50070">browse the NameNode</a> and see what information is available. As you notice, your node is empty, so you need to create some stuff in there for you to work with. Or, to be precise, that MapReduce requires for it to be able to work properly:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash"># Required to run MapReduce Jobs (output ends up here)
+hdfs dfs -mkdir /user
+hdfs dfs -mkdir /user/&lt;username&gt;  # Best guess is that &lt;username&gt; should be "vagrant" for now.
+
+# Create a place for input files and copy them there from your local filesystem
+hdfs dfs -mkdir input
+hdfs dfs -put $HADOOP_HOME/*.txt input
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-4" class="outline-4">
+<h4 id="sec-5-2-4"><span class="section-number-4">5.2.4</span> Run a MapReduce Job</h4>
+<div class="outline-text-4" id="text-5-2-4">
+<p>
+Now you are at a point where you can re-run your previous example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar wordcount input output
+
+hdfs dfs -cat output/*
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-5" class="outline-4">
+<h4 id="sec-5-2-5"><span class="section-number-4">5.2.5</span> Configure YARN</h4>
+<div class="outline-text-4" id="text-5-2-5">
+<p>
+Please note that you are still running in somewhat of a local mode. The mapreduce job, while using the NameNode to access the hdfs filesystem, is still running &ldquo;locally&rdquo; in your VM, and no attempt is made to invoke YARN to even try to distribute it. So first we need to tell MapReduce to use YARN by editing a few more configuration files:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">File</th>
+<th scope="col" class="left">Property Name</th>
+<th scope="col" class="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">mapred-site.xml</td>
+<td class="left">mapreduce.framework.name</td>
+<td class="left"><code>yarn</code></td>
+</tr>
+
+<tr>
+<td class="left">yarn-site.xml</td>
+<td class="left">yarn.nodemanager.aux-services</td>
+<td class="left"><code>mapreduce_shuffle</code></td>
+</tr>
+
+<tr>
+<td class="left">yarn-site.xml</td>
+<td class="left">yarn.nodemanager.env-whitelist</td>
+<td class="left"><code>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</code></td>
+</tr>
+
+<tr>
+<td class="left">yarn-site.xml</td>
+<td class="left">yarn.nodemanager.log-dirs</td>
+<td class="left"><code>/tmp/hadoop-logs</code></td>
+</tr>
+
+<tr>
+<td class="left">yarn-site.xml</td>
+<td class="left">yarn.resourcemanager.hostname</td>
+<td class="left"><code>127.0.0.1</code></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+You also need to edit <code>yarn-env.sh</code> to set the log-dir there since the property set above does not propagate properly.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">if [ "$YARN_LOG_DIR" = "" ]; then
+  YARN_LOG_DIR="/tmp/hadoop-logs"
+fi
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-6" class="outline-4">
+<h4 id="sec-5-2-6"><span class="section-number-4">5.2.6</span> Re-Run MapReduce Job</h4>
+<div class="outline-text-4" id="text-5-2-6">
+<p>
+Now you are (again) at a point where you can re-run your previous example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar wordcount input output
+
+hdfs dfs -cat output/*
+</pre>
+</div>
+
+<p>
+This will invoke YARN to launch the mapreduce job, and use the files from HDFS as input. The second command displays the output for you.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Hadoop Fully Distributed Mode</h3>
+<div class="outline-text-3" id="text-5-3">
+</div><div id="outline-container-sec-5-3-1" class="outline-4">
+<h4 id="sec-5-3-1"><span class="section-number-4">5.3.1</span> Edit the Vagrantfile</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<p>
+To run in a cluster, you need to have a set of machines to play with. So we need to modify the Vagrantfile to spin up a set of servers, i.e. a <code>ResourceManager</code>, a <code>NameNode</code>, and a couple of <code>DataNodes</code> (Can double with the <code>ResourceManager</code> and <code>NameNode</code> if you have a small cluster and a small number of jobs). To keep things simple, let&rsquo;s merge things into a couple of machines:
+</p>
+
+<div class="info">
+<p>
+<b>Create the following machines</b>
+</p>
+
+<ul class="org-ul">
+<li>worker0
+</li>
+<li>worker1
+</li>
+<li>worker2
+</li>
+<li>master
+</li>
+</ul>
+
+<p>
+(create them in this order, so that the workers are already running when the master tries to contact them)
+</p>
+
+</div>
+
+<p>
+Configure these machines so that:
+</p>
+
+<ul class="org-ul">
+<li>they all have 1024MB of memory
+</li>
+<li>they all run on a private network (for simplicity&rsquo;s sake, put them all on the <code>10.0.0.0</code> network and assign the IP&rsquo;s statically)
+</li>
+<li>they are provisioned with Puppet
+</li>
+<li>the master forwards ports 8088 and 50070
+</li>
+</ul>
+
+<p>
+In order for the VM&rsquo;s to recognise each other, you can use the <code>hostmanager</code> provisioning plugin for Vagrant:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">$ vagrant plugin install vagrant-hostmanager
+</pre>
+</div>
+
+<p>
+&#x2026; and edit your <code>Vagrantfile</code> accordingly:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">  # Manage /etc/hosts on host and VMs
+  config.hostmanager.enabled = false
+  config.hostmanager.manage_host = true
+  config.hostmanager.manage_guest = true  
+  config.hostmanager.include_offline = true
+  config.hostmanager.ignore_private_ip = false  
+
+# For each machine (config.vm.define machine do |c| )
+  c.vm.provision :hostmanager
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-3-2" class="outline-4">
+<h4 id="sec-5-3-2"><span class="section-number-4">5.3.2</span> Configure Hadoop</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<p>
+The following needs to be set for a fully distributed mode (note the similarities and differences to the pseudo-distributed mode):
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">File</th>
+<th scope="col" class="left">Property Name</th>
+<th scope="col" class="left">Value</th>
+<th scope="col" class="left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">core-site.xml</td>
+<td class="left">fs.defaultFS</td>
+<td class="left"><code>hdfs://master/</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">hdfs-site.xml</td>
+<td class="left">dfs.replication</td>
+<td class="left"><code>3</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">hdfs-site.xml</td>
+<td class="left">dfs.datanode.data.dir</td>
+<td class="left"><code>file:///opt/hdfs/datanode</code></td>
+<td class="left">path on local filesystem</td>
+</tr>
+
+<tr>
+<td class="left">hdfs-site.xml</td>
+<td class="left">dfs.namenode.name.dir</td>
+<td class="left"><code>file:///opt/hdfs/namenode</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">hdfs-site.xml</td>
+<td class="left">dfs.namenode.rpc-bind-host</td>
+<td class="left"><code>0.0.0.0</code></td>
+<td class="left">listen on all network interfaces</td>
+</tr>
+
+<tr>
+<td class="left">hdfs-site.xml</td>
+<td class="left">dfs.namenode.servicerpc-bind-host</td>
+<td class="left"><code>0.0.0.0</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">mapred-site.xml</td>
+<td class="left">mapreduce.framework.name</td>
+<td class="left"><code>yarn</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">mapred-site.xml</td>
+<td class="left">mapred.job.tracker</td>
+<td class="left"><code>master</code></td>
+<td class="left">master server name.</td>
+</tr>
+
+<tr>
+<td class="left">yarn-site.xml</td>
+<td class="left">yarn.nodemanager.aux-services</td>
+<td class="left"><code>mapreduce_shuffle</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">yarn-site.xml</td>
+<td class="left">yarn.nodemanager.env-whitelist</td>
+<td class="left"><code>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME,YARN_LOG_DIR</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">yarn-site.xml</td>
+<td class="left">yarn.nodemanager.log-dirs</td>
+<td class="left"><code>/tmp/hadoop-logs</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">yarn-site.xml</td>
+<td class="left">yarn.resourcemanager.hostname</td>
+<td class="left"><code>master</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">yarn-site.xml</td>
+<td class="left">yarn.resourcemanager.bind-host</td>
+<td class="left"><code>0.0.0.0</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">hadoop-env.sh</td>
+<td class="left"><code>$JAVA_HOME</code></td>
+<td class="left"><code>/usr/lib/jvm/java-7-openjdk-amd64</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">yarn-env.sh</td>
+<td class="left"><code>$YARN_LOG_DIR</code></td>
+<td class="left"><code>/tmp/hadoop-logs</code></td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The file <code>masters</code> should contain the name of your master node:
+</p>
+
+<pre class="example">
+master
+</pre>
+
+<p>
+The file <code>slaves</code> should contain the names of your worker nodes:
+</p>
+
+<pre class="example">
+worker0
+worker1
+worker2
+</pre>
+
+<p>
+<b>Note:</b> Technically, you should not need the file <code>masters</code> for this small a setup, and you may want to add the machine <code>master</code> to the file <code>slaves</code>. For some reason, the <code>master</code> identifies itself as 127.0.0.1, which creates problems when the workers tries to replicate files to the master and end up trying to replicate them to themselves. To exclude the <code>master</code> server from the set of workers is a simple workaround for this. If you find out how to fix this in a better way, please let me know.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-3-3" class="outline-4">
+<h4 id="sec-5-3-3"><span class="section-number-4">5.3.3</span> Create Puppet Provisioning</h4>
+<div class="outline-text-4" id="text-5-3-3">
+<p>
+The base provisioning is to run <code>apt-get update</code> and then ensure that the package <code>openjdk-7-jdk</code> is present.
+</p>
+
+<p>
+Then, create rules to:
+</p>
+
+<ul class="org-ul">
+<li>Install and setup Hadoop with by:
+<ul class="org-ul">
+<li>downloading Hadoop
+</li>
+<li>unpacking Hadoop
+</li>
+<li>copying the following files to their right place:
+<ul class="org-ul">
+<li>core-site.xml
+</li>
+<li>mapred-site.xml
+</li>
+<li>hdfs-site.xml
+</li>
+<li>yarn-site.xml
+</li>
+<li>hadoop-env.sh
+</li>
+<li>yarn-env.sh
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Setup passphraseless ssh, by:
+<ul class="org-ul">
+<li>copying (pre-created) <code>id_rsa</code> and <code>id_rsa.pub</code> -files to <code>/home/vagrant/.ssh/</code>
+</li>
+<li>create the file <code>/home/vagrant/.ssh/config</code> with the content =StrictHostKeyChecking no~
+</li>
+<li>authorize the key in the <code>id_rsa.pub</code> file with a <code>ssh_authorized_key</code> rule.
+</li>
+</ul>
+</li>
+<li>Configure the node <code>master</code> to
+<ul class="org-ul">
+<li>include the hadoop installation above
+</li>
+<li>include the ssh setup above
+</li>
+<li>copy the files <code>masters</code> and <code>slaves</code> to the right place
+</li>
+<li>ensure that the directory where you want to create the HDFS exists and is owned by the user and group <code>vagrant</code>
+</li>
+<li>format HDFS <code>hdfs namenode -format -force</code> (note, the <code>-force</code> flag clears any previous installation you may have. In a live setting, this may not be what you want)
+</li>
+<li>populate the HDFS by (at least) creating the following directories:
+<ul class="org-ul">
+<li><code>/user</code>
+</li>
+<li><code>/user/vagrant</code>
+</li>
+</ul>
+</li>
+<li>configure all other nodes (use the node configuration <code>default</code> for this) to:
+<ul class="org-ul">
+<li>include the hadoop installation above
+</li>
+<li>include the ssh setup above
+</li>
+<li>ensure that the directory where you want to create the HDFS exists and is owned by the user and group <code>vagrant</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-3-4" class="outline-4">
+<h4 id="sec-5-3-4"><span class="section-number-4">5.3.4</span> Provision to start Hadoop</h4>
+<div class="outline-text-4" id="text-5-3-4">
+<p>
+The Puppet provisioning is only run when you first create your nodes (the first time you run <code>vagrant up</code>). In order for Hadoop to start everytime you re-start your VM&rsquo;s you need to provision this separately. The easiest is to do this in the <code>Vagrantfile</code> (<b>Note:</b> This should only be done for the <code>master</code>):
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">c.vm.provision "shell", run: "always" do |p|
+  p.privileged=false                             # run as vagrant, not as root
+  p.inline= &lt;&lt;-SHELL
+      source /home/vagrant/hadoop-common.sh      # setup $JAVA_HOME, $HADOOP_HOME, $PATH, etc.
+      start-dfs.sh                               # start hdfs on all nodes in the slaves-file
+      start-yarn.sh                              # likewise, start yarn on all nodes
+  SHELL
+end
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-3-5" class="outline-4">
+<h4 id="sec-5-3-5"><span class="section-number-4">5.3.5</span> Re-Run MapReduce Job</h4>
+<div class="outline-text-4" id="text-5-3-5">
+<p>
+Now you are (again) at a point where you can re-run your previous example. First, run <code>vagrant up</code> and see your nodes magically spring to life. Enter the master with <code>vagrant ssh master</code> and re-run the wordcount example again (assuming you have added some files into the <code>/users/vagrant/input</code> directory).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar wordcount input output
+
+hdfs dfs -cat output/*
+</pre>
+</div>
+
+<p>
+If this runs successfully, take a celebratory victory lap around the office.
+</p>
+
+
+<div class="figure">
+<p><img src="./images/Isuccess_baby.jpg" alt="Isuccess_baby.jpg" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Sprint Test Plan</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Go through the user stories for this sprint and make sure you have a clear solution to each of them.
+</p>
+
+<p>
+Revisit and update your risks and contingencies section.
+</p>
+
+<p>
+Add and/or revise the following items to your glossary:
+</p>
+<ul class="org-ul">
+<li>Hadoop
+</li>
+<li>HDFS
+</li>
+<li>YARN
+</li>
+<li>MapReduce
+
+<p>
+Make sure that you understand what each item is, but also what the differences between them are (where applicable). 
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Assignment Submission</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+There is no submission in this sprint. The focus is for you to get into a position where you can more easily conduct other parts of the course.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-6" class="outline-3">
+<h3 id="sec-5-6"><span class="section-number-3">5.6</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-6">
+<ul class="org-ul">
+<li>If you have access to the bare metal of the nodes in your cluster, using Vagrant and virtual machines is not your most efficient choice for setting up your hadoop cluster. What is the easiest way of getting a one-click deployment of a hadoop cluster on bare metal?
+</li>
+<li>What if you want to only replace Vagrant with Docker? How do you need to set up your machines then?
+</li>
+<li>Logs are currently created on each datanode. If something goes wrong in your MapReduce job, or if you wish to debug your job, then you need to find the datanode where the job was run and locate the logs. What do you need to do to configure log aggregation over all your nodes? What commands do YARN provide for accessing the logs of a particular job?
+
+<p>
+Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer. 
+</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You have configured and run Hadoop MapReduce in Standalone mode inside a virtual machine.
+</li>
+<li>You have configured and run Hadoop MapReduce in Pseudo-Distributed mode inside a virtual machine.
+</li>
+<li>You have configured and run Hadoop MapReduce in Fully Distributed mode inside a set of virtual machines.
+</li>
+</ul>
+
+<p>
+You may also have:
+</p>
+<ul class="org-ul">
+<li>Updated your Sprint Test Plan
+</li>
+<li>Updated your Course Backlog
+</li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>Appache&rsquo;s documentation says port 9870, you may need to check the logs created by your <code>start-dfs.sh</code> command to see which ports your instance desires</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-06-26 Mon 13:30</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
