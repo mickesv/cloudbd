@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Sprint: Setting up Hadoop</title>
-<!-- 2017-06-26 Mon 13:30 -->
+<!-- 2017-08-15 Tue 09:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Mikael Svahnberg" />
@@ -276,7 +276,7 @@ In its origin, mapreduce is a computing paradigm which has existed for quite som
 <dl class="org-dl">
 <dt> Map </dt><dd>Filter and process the input and break it down to relevant &lt;key/value&gt; pairs. This can be done in parallel on different subsets of the input, and the output is written to temporary storage on HDFS.
 </dd>
-<dt> Shuffle </dt><dd>Redistribute the work based on the output keys. All values for each key is (potentially) assigned to one worker node for furhter processing.
+<dt> Shuffle </dt><dd>Redistribute the work based on the output keys. All values for each key is (potentially) assigned to one worker node for further processing.
 </dd>
 <dt> Reduce </dt><dd>Each worker node now focuses (in parallel) on the values for a single key, and process this as required. An implicit fourth phase consolidates the output from each worker node into a single output for the entire job.
 </dd>
@@ -1287,7 +1287,7 @@ You may also have:
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-06-26 Mon 13:30</p>
+<p class="date">Created: 2017-08-15 Tue 09:56</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

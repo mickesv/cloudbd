@@ -4,10 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Sprint: The Clone Wars</title>
-<!-- 2017-06-26 Mon 13:41 -->
+<!-- 2017-08-15 Tue 09:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Mikael Svahnberg" />
+<meta  name="author" content="Michael Unterkalmsteiner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center; }
@@ -150,13 +150,13 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
 <li><a href="#sec-3">3. Introduction </a>
 <ul>
-<li><a href="#sec-3-1">3.1. Clone detection 101</a></li>
+<li><a href="#sec-3-1">3.1. Clone detection 101 </a></li>
 <li><a href="#sec-3-2">3.2. ClonyMcCloneface</a></li>
 </ul>
 </li>
 <li><a href="#sec-4">4. Experiential Learning </a>
 <ul>
-<li><a href="#sec-4-1">4.1. Setup your development environment</a></li>
+<li><a href="#sec-4-1">4.1. Setup your development environment </a></li>
 <li><a href="#sec-4-2">4.2. Get ClonyMcCloneface</a></li>
 <li><a href="#sec-4-3">4.3. Complete the implementation </a></li>
 <li><a href="#sec-4-4">4.4. Run the clone detection on a small data set</a></li>
@@ -173,8 +173,7 @@ for the JavaScript code in this tag.
 <h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-This sprint introduces a text-based clone detection algorithm and
-ClonyMcCloneface, a simple clone detector.
+This sprint introduces a text-based clone detection algorithm and ClonyMcCloneface, a simple clone detector.
 </p>
 </div>
 </div>
@@ -195,15 +194,10 @@ ClonyMcCloneface, a simple clone detector.
 <h2 id="sec-3"><span class="section-number-2">3</span> Introduction <a id="introduction" name="introduction"></a></h2>
 <div class="outline-text-2" id="text-3">
 </div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Clone detection 101</h3>
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Clone detection 101 <a id="101" name="101"></a></h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-In the <a href="./BigDataAnalytics-Assignment.html">assignment outline</a> you have seen what a code clone is. Here we introduce
-a simple clone detection algorithm on which ClonyMcCloneface is based. The idea
-is simple: if we find one or more lines of code that are exactly the same, we
-have found a clone. Clones of size 1 are however quite uninteresting and much
-too common. The figure below contains 3 clones of size 1 (in lines 56, 64 and
-67). Not very useful.
+In the <a href="./BigDataAnalytics-Assignment.html">assignment outline</a> you have seen what a code clone is. Here we introduce a simple clone detection algorithm on which ClonyMcCloneface is based. The idea is simple: if we find one or more lines of code that are exactly the same, we have found a clone. Clones of size 1 are however quite uninteresting and much too common. The figure below contains 3 clones of size 1 (in lines 56, 64 and 67). Not very useful.
 </p>
 
 
@@ -213,10 +207,7 @@ too common. The figure below contains 3 clones of size 1 (in lines 56, 64 and
 </div>
 
 <p>
-The idea is therefore to look at <i>chunks</i> of code instead of individual lines of
-code. A source code file is split up into chunks of size N, where N is the
-number of lines a chunk contains. If a file contains M lines of code, the number
-of chunks in a file is M-N+1. The figure below illustrates the idea.
+The idea is therefore to look at <i>chunks</i> of code instead of individual lines of code. A source code file is split up into chunks of size N, where N is the number of lines a chunk contains. If a file contains M lines of code, the number of chunks in a file is M-N+1. The figure below illustrates the idea.
 </p>
 
 
@@ -226,17 +217,12 @@ of chunks in a file is M-N+1. The figure below illustrates the idea.
 </div>
 
 <p>
-The chunks shown on the left side are of size 5. We identify a chunk by its
-filename, and its beginning and ending line. Note that empty lines (lines
-57, 60 and 65) do not contribute to chunk size. Now, to identify a clone, we
-compare chunks, instead of lines. This will identify clones with a minimum of
-size N (5 in our example above).
+The chunks shown on the left side are of size 5. We identify a chunk by its filename, and its beginning and ending line. Note that empty lines (lines 57, 60 and 65) do not contribute to chunk size. Now, to identify a clone, we
+compare chunks, instead of lines. This will identify clones with a minimum of size N (5 in our example above).
 </p>
 
 <p>
-There is one problem, though: we will detect clones of chunk size N and only
-of N, i.e. no larger clones. In order to find larger clones, we need to <i>expand</i>
-the initially detected clones of size N. The figure below illustrates the idea.
+There is one problem, though: we will detect clones of chunk size N and only of N, i.e. no larger clones. In order to find larger clones, we need to <i>expand</i> the initially detected clones of size N. The figure below illustrates the idea.
 </p>
 
 
@@ -246,12 +232,7 @@ the initially detected clones of size N. The figure below illustrates the idea.
 </div>
 
 <p>
-If we compare Chunk(File A, 54, 59) with Chunk(File B, 56, 61), we have a
-match. To expand this clone, we check if the next chunks in each file
-[Chunk(File A, 55, 61) and Chunk(File B, 57, 63)] are equivalent. Since they
-are, we continue this process until the chunks don&rsquo;t match anymore [Chunk(File
-A, 58, 63) and Chunk(File B, 60, 65)] and stop the expansion. We end up with a
-clone of size 7 as indicated in the figure above.
+If we compare Chunk(File A, 54, 59) with Chunk(File B, 56, 61), we have a match. To expand this clone, we check if the next chunks in each file [Chunk(File A, 55, 61) and Chunk(File B, 57, 63)] are equivalent. Since they are, we continue this process until the chunks don&rsquo;t match anymore [Chunk(File A, 58, 63) and Chunk(File B, 60, 65)] and stop the expansion. We end up with a clone of size 7 as indicated in the figure above.
 </p>
 
 
@@ -259,16 +240,13 @@ clone of size 7 as indicated in the figure above.
 To summarize, the algorithm consists of the following steps:
 </p>
 <ol class="org-ol">
-<li>Read in the source code and remove code comments, and whitespace that changes
-only the code layout.
+<li>Read in the source code and remove code comments, and whitespace that changes only the code layout.
 </li>
 <li>Split up each file into chunks of size N and store the chunks in a list.
 </li>
-<li>Iterate over the list of chunks and compare each chunk with each other
-chunk. 
+<li>Iterate over the list of chunks and compare each chunk with each other chunk. 
 </li>
-<li>If equivalent chunks are found, expand the clone to identify the largest common
-number of equivalent chunks.
+<li>If equivalent chunks are found, expand the clone to identify the largest common number of equivalent chunks.
 </li>
 </ol>
 </div>
@@ -278,11 +256,7 @@ number of equivalent chunks.
 <h3 id="sec-3-2"><span class="section-number-3">3.2</span> ClonyMcCloneface</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-We have implemented the algorithm described in the previous section in a clone
-detector called ClonyMcCloneface (<a href="https://en.wikipedia.org/wiki/RRS_Sir_David_Attenborough">name reference</a>). You&rsquo;ll use and expand
-ClonyMcCloneface throughout this assignment. In this sprint, you are required to
-complete the tasks listed in <a href="#learning">Experiential Learning</a>. You know you are done with
-this sprint when you pass the <a href="#acceptance">Acceptance Tests</a>.
+We have implemented the algorithm described in the previous section in a clone detector called ClonyMcCloneface (<a href="https://en.wikipedia.org/wiki/RRS_Sir_David_Attenborough">name reference</a>). You&rsquo;ll use and expand ClonyMcCloneface throughout this assignment. In this sprint, you are required to complete the tasks listed in <a href="#learning">Experiential Learning</a>. You know you are done with this sprint when you pass the <a href="#acceptance">Acceptance Tests</a>.
 </p>
 </div>
 </div>
@@ -291,32 +265,28 @@ this sprint when you pass the <a href="#acceptance">Acceptance Tests</a>.
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4"><span class="section-number-2">4</span> Experiential Learning <a id="learning" name="learning"></a></h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Setup your development environment</h3>
+<p>
+The version of ClonyMcCloneface used in this sprint implements the ideas presented in the <a href="#101">introduction</a>. Your task is to complete some of the missing code, run the detector on different data sets and report on the observed results.
+</p>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Setup your development environment <a id="setup" name="setup"></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
-You should conduct all development within a Virtualbox environment. This allows
-us to provide you support in case something is not working and you can keep your
-computer clutter free.
+You should conduct all development within a Virtualbox environment. This allows us to provide you support in case something is not working and you can keep your computer clutter free.
 </p>
 
 <ol class="org-ol">
-<li>If you did not complete Sprint <a href="../Provisioning/Sprint-Getting-Started-Virtualisation.html">Getting Started with Virtualization</a>, now it&rsquo;s
-a good time. 
+<li>If you did not complete Sprint <a href="../Provisioning/Sprint-Getting-Started-Virtualisation.html">Getting Started with Virtualization</a>, now it&rsquo;s a good time. 
 </li>
-<li>Get this <a href="./material/vagrant_development_environment/Vagrantfile">Vagrantfile</a> and read the provision section to understand <i>what</i>
-   will be installed <i>where</i>.
+<li>Get this <a href="./material/vagrant_development_environment/Vagrantfile">Vagrantfile</a> and read the provision section to understand <i>what</i> will be installed <i>where</i>.
 </li>
 <li>Setup your development environment using vagrant.
 </li>
-<li>Login into the VM and install the development environment of your choice. We
-suggest you to use eclipse, but note that you cannot install the version
-provided by Ubuntu (3.8) since that one does not support Java 8. You need to
-install <a href="https://www.eclipse.org/downloads/?">eclipse 4.6 (Neon)</a> manually (here are some <a href="http://ubuntuhandbook.org/index.php/2016/01/how-to-install-the-latest-eclipse-in-ubuntu-16-04-15-10/">instructions</a>).
+<li>Login into the VM and install the development environment of your choice. We suggest you to use eclipse, but note that you cannot install the version provided by Ubuntu (3.8) since that one does not support Java 8. You need to install <a href="https://www.eclipse.org/downloads/?">eclipse 4.6 (Neon)</a> manually (here are some <a href="http://ubuntuhandbook.org/index.php/2016/01/how-to-install-the-latest-eclipse-in-ubuntu-16-04-15-10/">instructions</a>).
 </li>
-<li>Bonus task: adapt the Vagrantfile to install your favorite IDE (eclipse,
-netbeans, emacs, &#x2026;) so you don&rsquo;t have to do it manually in case you want to
-trash the VM.
+<li>Bonus task: adapt the Vagrantfile to install your favorite IDE (eclipse, netbeans, emacs, &#x2026;) so you don&rsquo;t have to do it manually in case you want to trash the VM.
 </li>
 </ol>
 
@@ -326,8 +296,7 @@ trash the VM.
 </p>
 
 <ol class="org-ol">
-<li>According to the directives in the vagrant file, which software packages are
-installed?
+<li>According to the directives in the vagrant file, which software packages are installed?
 </li>
 <li>Where is the Qualitas corpus installed?
 </li>
@@ -348,8 +317,7 @@ installed?
 </pre>
 </div>
 </li>
-<li>Unpack the archive (it contains an eclipse project file, so you can import it
-directly into eclipse), open it in your IDE and start exploring the code.
+<li>Unpack the archive (it contains an eclipse project file, so you can import it directly into eclipse), open it in your IDE and start exploring the code.
 </li>
 </ol>
 
@@ -371,12 +339,7 @@ directly into eclipse), open it in your IDE and start exploring the code.
 <h3 id="sec-4-3"><span class="section-number-3">4.3</span> Complete the implementation <a id="complete" name="complete"></a></h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
-The objective of this activity is to familiarize yourself with the code in
-ClonyMcCloneface. If you run the unit tests, you will notice that some of them
-fail. Indeed, some of the code is incomplete. Your task is to find all locations 
-marked with a TODO comment, implement the missing code (using what you have
-learned about the clone detection algorithm in the <a href="#introduction">Introduction</a>), and make all
-unit tests pass. 
+The objective of this activity is to familiarize yourself with the code in ClonyMcCloneface. If you run the unit tests, you will notice that some of them fail. Indeed, some of the code is incomplete. Your task is to find all locations marked with a TODO comment, implement the missing code (using what you have learned about the clone detection algorithm in the <a href="#introduction">Introduction</a>), and make all unit tests pass. 
 </p>
 
 <div class="info">
@@ -399,14 +362,11 @@ unit tests pass.
 <h3 id="sec-4-4"><span class="section-number-3">4.4</span> Run the clone detection on a small data set</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
-The provisioning of your development environment with vagrant has also installed
-the Qualitas corpus that contains the source code of 112 software systems. 
-Take some time to explore the systems (see checkpoint questions).
+The provisioning of your development environment with vagrant has also installed the Qualitas corpus that contains the source code of 112 software systems. Take some time to explore the systems (see checkpoint questions).
 </p>
 
 <p>
-Then, run the ClonyMcCloneface on the <code>ant</code> sytsem. The <code>main</code> method in class
-<code>NaiveDetector</code> expects two arguments:
+Then, run the ClonyMcCloneface on the <code>ant</code> sytsem. The <code>main</code> method in class <code>NaiveDetector</code> expects two arguments:
 </p>
 <ol class="org-ol">
 <li>The directory that contains the to-be-analysed source code
@@ -416,9 +376,7 @@ Then, run the ClonyMcCloneface on the <code>ant</code> sytsem. The <code>main</c
 </ol>
 
 <p>
-Open the file that contains the reported clones and check that the identified
-clones are indeed duplicated code fragments. If you completed the <a href="#complete">previous task</a>,
-the output of ClonyMcCloneface should look like this:
+Open the file that contains the reported clones and check that the identified clones are indeed duplicated code fragments. If you completed the <a href="#complete">previous task</a>, the output of ClonyMcCloneface should look like this:
 </p>
 
 <pre class="example">
@@ -475,8 +433,7 @@ Now run ClonyMcCloneface on the complete Qualitas corpus.
 </li>
 <li>If the analysis fails, why?
 </li>
-<li>Briefly discuss potential improvements to the detection algorithm and/or
-the used data structures. 
+<li>Briefly discuss potential improvements to the detection algorithm and/or the used data structures. 
 </li>
 </ol>
 
@@ -504,9 +461,9 @@ You are done with this sprint when:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Mikael Svahnberg</p>
-<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-06-26 Mon 13:41</p>
+<p class="author">Author: Michael Unterkalmsteiner</p>
+<p class="email">Email: <a href="mailto:Michael.Unterkalmsteiner@bth.se">Michael.Unterkalmsteiner@bth.se</a></p>
+<p class="date">Created: 2017-08-15 Tue 09:56</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Assignment Introduction: Big Data Analytics</title>
-<!-- 2017-06-26 Mon 13:41 -->
+<!-- 2017-08-15 Tue 09:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Mikael Svahnberg" />
@@ -183,8 +183,7 @@ This text introduces the Big Data Analytics assignment.
 <h2 id="sec-2"><span class="section-number-2">2</span> Introduction</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-Every endeavour into the realm of data science should start with a
-question. That question must:
+Every endeavour into the realm of data science should start with a question. That question must:
 </p>
 <ul class="org-ul">
 <li>provide value to some stakeholder, and
@@ -194,16 +193,11 @@ question. That question must:
 </ul>
 
 <p>
-Since this course is targeted at Software Engineers, the question we are trying
-to answer in this assignment is related to a software engineering phenomenon:
-<i>code clones</i>. In particular, we are asking the question: 
-<b>How many code clones does a particular set of source code files contain?</b> 
+Since this course is targeted at Software Engineers, the question we are trying to answer in this assignment is related to a software engineering phenomenon: <i>code clones</i>. In particular, we are asking the question: <b>How many code clones does a particular set of source code files contain?</b> 
 </p>
 
 <p>
-In the remainder of this section, we discuss the value an answer to this
-question might provide and how this question can be answered by analytical
-means.
+In the remainder of this section, we discuss the value an answer to this question might provide and how this question can be answered by analytical means.
 </p>
 </div>
 
@@ -211,10 +205,7 @@ means.
 <h3 id="sec-2-1"><span class="section-number-3">2.1</span> What are code clones and why should I care?</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-A code clone is a piece of code that is duplicated in one or more places within
-a set of source code files. Typically, code clones are created by copying pieces
-of code with little or no modifications in order to replicate some
-functionality. The figure below shows such a code clone.
+A code clone is a piece of code that is duplicated in one or more places within a set of source code files. Typically, code clones are created by copying pieces of code with little or no modifications in order to replicate some functionality. The figure below shows such a code clone.
 </p>
 
 
@@ -224,53 +215,33 @@ functionality. The figure below shows such a code clone.
 </div>
 
 <p>
-This clone is not an <i>exact</i> clone. While the structure and logic of the code is
-equivalent, variable- and methodnames differ. Furthermore, the left side
-contains commented code that does not exist on the right side. In general, we
-distinguish between 4 <i>types</i> of code clones [<a href="#1">1</a>]:
+This clone is not an <i>exact</i> clone. While the structure and logic of the code is equivalent, variable- and methodnames differ. Furthermore, the left side contains commented code that does not exist on the right side. In general, we distinguish between 4 <i>types</i> of code clones [<a href="#1">1</a>]:
 </p>
 
 <dl class="org-dl">
-<dt> Type-1: </dt><dd>Identical code fragments except for variations in whitespace,
-layout and comments.
+<dt> Type-1: </dt><dd>Identical code fragments except for variations in whitespace, layout and comments.
 </dd>
-<dt> Type-2: </dt><dd>Syntactically identical fragments except for variations in
-identifiers, literals, types, whitespace, layout and comments.
+<dt> Type-2: </dt><dd>Syntactically identical fragments except for variations in identifiers, literals, types, whitespace, layout and comments.
 </dd>
-<dt> Type-3: </dt><dd>Copied fragments with further modifications such as changed, added
-or removed statements, in addition to variations in identifiers,
-literals, types, whitespace, layout and comments.
+<dt> Type-3: </dt><dd>Copied fragments with further modifications such as changed, added or removed statements, in addition to variations in identifiers, literals, types, whitespace, layout and comments.
 </dd>
-<dt> Type-4: </dt><dd>Two or more code fragments that perform the same computation but
-are implemented by different syntactic variants.
+<dt> Type-4: </dt><dd>Two or more code fragments that perform the same computation but are implemented by different syntactic variants.
 </dd>
 </dl>
 
 <p>
-But why are code clones a problem? Imagine you need to extend the code shown in
-the above figure, for example by letting the user change the directory before
-creating it. You would have to introduce that change in two places (or more, who
-knows?) and test both. Another scenario is that you identify a bug in the above
-code but are unaware that the code (and the bug) is replicated somewhere
-else. Having a code clone detector would be handy in both cases. Once the clones
-are identified, there are two main strategies on how to handle the problem: 
+But why are code clones a problem? Imagine you need to extend the code shown in the above figure, for example by letting the user change the directory before creating it. You would have to introduce that change in two places (or more, who knows?) and test both. Another scenario is that you identify a bug in the above code but are unaware that the code (and the bug) is replicated somewhere else. Having a code clone detector would be handy in both cases. Once the clones are identified, there are two main strategies on how to handle the problem: 
 </p>
 
 <ol class="org-ol">
 <li>refactor the code such that the functionality is not duplicated 
 </li>
-<li>maintain a registry of code clones that can be used to lookup clones when changes to the code
-are made
+<li>maintain a registry of code clones that can be used to lookup clones when changes to the code are made
 </li>
 </ol>
 
 <p>
-Note however that code clones are not <i>per se</i> a design flaw to avoid at all
-costs. As often in engineering, the decision on how to handle a problem depends on the
-particular situation, code clones not being an exception. You might find the work by
-Kapser and Godfrey useful as they identify code clone patterns, describe their
-advantages/disadvantages, long term issues and provide advice on how to manage
-them [<a href="#2">2</a>].
+Note however that code clones are not <i>per se</i> a design flaw to avoid at all costs. As often in engineering, the decision on how to handle a problem depends on the particular situation, code clones not being an exception. You might find the work by Kapser and Godfrey useful as they identify code clone patterns, describe their advantages/disadvantages, long term issues and provide advice on how to manage them [<a href="#2">2</a>].
 </p>
 </div>
 </div>
@@ -279,10 +250,7 @@ them [<a href="#2">2</a>].
 <h3 id="sec-2-2"><span class="section-number-3">2.2</span> The code clone detection process</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
-The tasks in this assignment are based upon extending and improving an existing
-code clone detector (ClonyMcCloneface will be introduced in Sprint
-Clones101). The detector you will working on is following the generic detection
-process shown in the figure below (cloned from [<a href="#1">1</a>]). 
+The tasks in this assignment are based upon extending and improving an existing code clone detector (ClonyMcCloneface will be introduced in Sprint <a href="./Sprint-A-New-Hope.html">A New Hope</a>). The detector you will working on is following the generic detection process shown in the figure below (cloned from [<a href="#1">1</a>]). 
 </p>
 
 
@@ -302,18 +270,11 @@ generic process.
 <h3 id="sec-2-3"><span class="section-number-3">2.3</span> Ok, I see the &lsquo;data&rsquo; but where is the &lsquo;big&rsquo;?</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
-The data you will be analysing is source code (even though the principle of
-clone detection can be applied to any data). Concretely, you will work with the
-<a href="http://qualitascorpus.com">Qualitas Corpus</a> which contains the source code of 112 software
-systems. Unpacked, the corpus contains ~10GB of data. You might argue that this
-is by no means Big Data (in terms of volume, but it is also static and quite
-homogeneous). On the other hand, the data in the corpus is just big enough to
-make its analysis painstakingly slow or even impossible on a single machine.
+The data you will be analysing is source code (even though the principle of clone detection can be applied to any data). Concretely, you will work with the <a href="http://qualitascorpus.com">Qualitas Corpus</a> which contains the source code of 112 software systems. Unpacked, the corpus contains ~10GB of data. You might argue that this is by no means Big Data (in terms of volume, but it is also static and quite homogeneous). On the other hand, the data in the corpus is just big enough to make its analysis painstakingly slow or even impossible on a single machine.
 </p>
 
 <p>
-In this assignment you&rsquo;ll work with data that is just big enough to make you
-think about finding more efficient ways on how to analyse it.
+In this assignment you&rsquo;ll work with data that is just big enough to make you think about finding more efficient ways on how to analyse it.
 </p>
 </div>
 </div>
@@ -326,13 +287,9 @@ think about finding more efficient ways on how to analyse it.
 <h3 id="sec-3-1"><span class="section-number-3">3.1</span> Further Reading</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
-<li>C. K. Roy, J. R. Cordy, and R. Koschke, &ldquo;Comparison and evaluation of code
-clone detection techniques and tools: A qualitative approach,&rdquo; Science of
-Computer Programming, vol. 74, no. 7, pp. 470–495, 2009. <a id="1" name="1"></a>
+<li>C. K. Roy, J. R. Cordy, and R. Koschke, &ldquo;Comparison and evaluation of code clone detection techniques and tools: A qualitative approach,&rdquo; Science of Computer Programming, vol. 74, no. 7, pp. 470–495, 2009. <a id="1" name="1"></a>
 </li>
-<li>Kapser, Cory J., and Michael W. Godfrey. &ldquo;&rsquo;Cloning considered harmful&rsquo;
-considered harmful: patterns of cloning in software.&rdquo; Empirical Software
-Engineering 13.6 (2008): 645. <a id="2" name="2"></a>
+<li>Kapser, Cory J., and Michael W. Godfrey. &ldquo;&rsquo;Cloning considered harmful&rsquo; considered harmful: patterns of cloning in software.&rdquo; Empirical Software Engineering 13.6 (2008): 645. <a id="2" name="2"></a>
 </li>
 </ol>
 </div>
@@ -395,7 +352,7 @@ The assignment is organised as a set of sprints.
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-06-26 Mon 13:41</p>
+<p class="date">Created: 2017-08-15 Tue 09:56</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
