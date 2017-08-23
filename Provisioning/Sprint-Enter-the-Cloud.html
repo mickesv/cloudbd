@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Sprint: Enter the Cloud</title>
-<!-- 2017-06-26 Mon 13:41 -->
+<!-- 2017-08-23 Wed 12:51 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Mikael Svahnberg" />
@@ -456,7 +456,7 @@ Note that you do not need to modify the <code>config.vm.provider</code> block yo
 </ul>
 
 <p>
-You ought to be able to re-use a lot of the manifest that you created in your Basic Multi-Machine Setup (in a previous Sprint).
+You ought to be able to re-use a lot of the manifest that you created in your Basic Multi-Machine Setup (in a previous Sprint). 
 </p>
 
 <p>
@@ -471,7 +471,7 @@ config.vm.provision :puppet
 </div>
 
 <p>
-<b>Test:</b> Run vagrant up and wait for DigitalOcean to create your droplets
+<b>Test:</b> Run <code>vagrant up</code> and wait for DigitalOcean to create your droplets. 
 </p>
 
 <p>
@@ -500,8 +500,70 @@ Run <code>vagrant ssh &lt;boxname&gt;</code> and poke around.
 <p>
 <b>Summary:</b> You have now created a Vagrant configuration that runs two boxes on a cloud provider, individually provisioned.
 </p>
+
+<p>
+<b>Test:</b> Run <code>vagrant up provider virtualbox</code> to see if you can spin up your machines locally using the same configuration.
+</p>
+
+<div class="warning">
+<p>
+<b>CRIT: ERROR 404 Unable to retrieve a valid package!</b>
+</p>
+
+<p>
+Ahrm. Yes. You will run in to this, since the latest version of Puppet is not available for the box you previously used for your virtual machines, <code>hashicorp/precise64</code>. Upgrade your virtual box in your <code>Vagrantfile</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">config.vm.box = "ubuntu/xenial64"
+</pre>
+</div>
+
+<p>
+Then run again.
+</p>
+
+</div>
+
+<div class="warning">
+<p>
+<b>invalid option: &#x2013;manifestdir</b>
+</p>
+
+<p>
+Ahrm. Yes. You will run in to this, since the box you previously used for your virtual machines, <code>hashicorp/precise64</code>, had an old version of puppet installed. Now, you are running the Latest and Fanciest Version, where <code>manifestdir</code> is deprecated. The solution is to move your manifestdir to <code>environments/&lt;name of environment&gt;</code> (For example, <code>environments/test</code>)
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">$ tree
+.
+|-- environments
+|   `-- test
+|       `-- manifests
+|           `-- default.pp
+`-- Vagrantfile
+</pre>
+</div>
+
+<p>
+and tell your <code>Vagrantfile</code> this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-ruby">config.puppet_install.puppet_version = :latest    
+config.vm.provision :puppet do |pup|
+  pup.environment_path="environments"
+  pup.environment = "test"
+end
+</pre>
+</div>
+
 </div>
 </div>
+</div>
+
 <div id="outline-container-sec-5-4" class="outline-3">
 <h3 id="sec-5-4"><span class="section-number-3">5.4</span> (Optional) Deploy Elsewhere (AWS)</h3>
 <div class="outline-text-3" id="text-5-4">
@@ -574,8 +636,8 @@ You may also have:
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-06-26 Mon 13:41</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2017-08-23 Wed 12:51</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
