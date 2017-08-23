@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Sprint 99: Finalise the Course</title>
+<!-- 2017-08-23 Wed 13:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../org/org.css" />
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<link rel="stylesheet" type="text/css" href="/org/org.css" />
+<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-100681577-1', 'auto');  ga('send', 'pageview');</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Sprint 99: Finalise the Course</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction</a></li>
+<li><a href="#sec-4">4. Experiential Learning</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Summarise your Assignments</a></li>
+<li><a href="#sec-4-2">4.2. Summarise your Learning</a></li>
+<li><a href="#sec-4-3">4.3. Update the Course Backlog</a></li>
+<li><a href="#sec-4-4">4.4. Fill in the Course Evaluation</a></li>
+<li><a href="#sec-4-5">4.5. Pass the Torch: System for Next Year</a></li>
+<li><a href="#sec-4-6">4.6. Recruit New Students</a></li>
+<li><a href="#sec-4-7">4.7. Keep in Touch</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This sprint describes what you may consider once you have passed the course.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a teacher I want the students to continue practicing what I have taught them so they further increase their proficiency.
+</li>
+<li>As a student I want to continue learning about and applying cloud computing so that I become a better software engineer.
+</li>
+<li>As a student I want to continue learning about and applying big data so that I become a better software engineer.
+</li>
+<li>As a student I want to contribute back to the course so that students in coming years can benefit from my experiences.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Congratulations, fellow traveller, for having made it this far. Your journey in this course is about to end. If you have made it this far you probably:
+</p>
+
+<ul class="org-ul">
+<li>Know a thing or two about cloud computing, and how to set up and work with a cloud-enabled environment.
+</li>
+<li>Know a thing or two about big data, and how to reason about solutions to big data analytics.
+</li>
+</ul>
+
+<p>
+You may also have passed the course assignments. We hope you have. We would like you to spend a few moments and think about where to go from here, and what you can do to further ingrain your skills. Below we list a number of activities that can help you in this endeavour. We also list some activities that will help us improve the course.   
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Summarise your Assignments</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Go through your submitted assignments. Make sure you have submitted them all and have received feedback on all of them.
+</p>
+
+<p>
+Make sure that the feedback makes sense. If not, ask for clarifications.
+</p>
+
+<p>
+Once you are done, send an e-mail to the course responsible with a reminder that you have completed all assignments, and want your grade on the course officially reported. Please include your social security number (personnummer) for disambiguation purposes.   
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Summarise your Learning</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Reflect upon what you have done and read. What have you learnt? What would you like to know more about?
+</p>
+
+<p>
+Use the university&rsquo;s online resouces while you still have access to them to search for and download articles that you would like to read.
+</p>
+
+<p>
+Make a list of articles that you would like to read. Update your course backlog and add items to read these articles.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Update the Course Backlog</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>Purge the [completed] course sprints from the backlog.
+</li>
+<li>Add items to answer any questions you may still have about the course contents.
+</li>
+<li>Reflect upon how you can change your current ways of working.
+</li>
+<li>What can you take with you into your own organisation?
+</li>
+<li>What do you need to learn more about?
+</li>
+<li>Reprioritise your backlog.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Fill in the Course Evaluation</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+We value your feedback, and we are constantly looking for ways to improve the course further. <b>Please complete the official course evaluation.</b>
+</p>
+
+<p>
+We would also like you to think about how the course was delivered, and what was delivered. If you can think of things that can be done better, please do send us an e-mail and tell us. We would love to discuss course improvement with you.
+</p>
+
+<p>
+In particular, if you have ideas that can make the assignments more streamlined for you, as a student, to learn from and to exercise your understanding of everything about object oriented design, then please tell us.
+</p>
+
+<p>
+Also, if you have ideas that can make the <i>marking</i> of assignments more streamlined, please discuss this with us.
+</p>
+
+<p>
+Should you wish to be anonymous, you are welcome to use regular post.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> Pass the Torch: System for Next Year</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+If you have an idea of a system that is of reasonable size that you think would be good for the students to work on next year, then summarise it in 1-2 pages and send it to us. We would like the system to have:
+</p>
+
+<ul class="org-ul">
+<li>Some meaningful user interaction
+</li>
+<li>Some interesting interaction between subsystems
+</li>
+<li>Some potentially large set of data
+</li>
+<li>Some complex relations between data items
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> Recruit New Students</h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+You are our best marketing platform. If you liked this course, please tell others about it.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-7" class="outline-3">
+<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Keep in Touch</h3>
+<div class="outline-text-3" id="text-4-7">
+<p>
+We would love to hear if and how you are able to use this course to improve your current way of working. Please send us an e-mail if you have questions or just want someone to throw ideas at. If you, in retrospect, find topics that we ought to cover in the course, please tell us.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You have at least considered each of the things to do listed above under experiential learning.
+</li>
+</ul>
+
+<p>
+You may also have:
+</p>
+<ul class="org-ul">
+<li>Updated your Course Backlog.
+</li>
+</ul>
+
+
+<p>
+<i>Thank you for your time and interest. &#x2013; MUN &amp;&amp; MSV</i> 
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-08-23 Wed 13:31</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
