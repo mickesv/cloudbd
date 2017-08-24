@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Sprint: Return of the Jedi</title>
+<!-- 2017-08-24 Thu 08:52 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Michael Unterkalmsteiner" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../org/org.css" />
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<link rel="stylesheet" type="text/css" href="/org/org.css" />
+<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-100681577-1', 'auto');  ga('send', 'pageview');</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Sprint: Return of the Jedi</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction </a>
+<ul>
+<li><a href="#sec-3-1">3.1. A MapReduce primer</a></li>
+<li><a href="#sec-3-2">3.2. Clone detection with MapReduce</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Learning Material</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Further Reading</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Experiential Learning </a>
+<ul>
+<li><a href="#sec-5-1">5.1. Setup your development environment</a></li>
+<li><a href="#sec-5-2">5.2. Get ClonyMcCloneface</a></li>
+<li><a href="#sec-5-3">5.3. Getting the data into HDFS</a></li>
+<li><a href="#sec-5-4">5.4. Local Hadoop</a></li>
+<li><a href="#sec-5-5">5.5. Do we really need three MapReduce jobs?</a></li>
+<li><a href="#sec-5-6">5.6. Distributed Hadoop</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+In this sprint, we run the clone detector in a distributed environment, allowing us to find clones in data that would not fit into the memory of a single machine.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a developer, I want to understand (by example) what is necessary to port a local to a distributed computation.
+</li>
+<li>As a developer, I want to be able to tune a Hadoop installation in order to perform a distributed computation.
+</li>
+<li>As a manager, I want to get an overview and introduction into distributed computing in order to get a better understanding of its benefits and costs.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction <a id="intro" name="intro"></a></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+In the <a href="./Sprint-A-New-Hope.html">previous sprint</a>, we have improved our initial clone detection algorithm. While runtime performance increased and memory efficiency improved, code clone detection on the complete Qualitas corpus will likely reach the resource limits of a single (desktop or laptop) computer. We turn therefore out attention, finally, to distributed computing, particularly with Hadoop and MapReduce. 
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> A MapReduce primer</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The basic idea of MapReduce is simple and implementations of this <i>divide and conquer</i> paradigm can be found in databases (e.g. <a href="http://docs.couchdb.org/en/2.1.0/intro/tour.html?highlight=mapreduce#running-a-query-using-mapreduce">CouchDB</a>, <a href="https://docs.mongodb.com/manual/core/map-reduce/">MongoDB</a>) and functional programming languages (e.g. <a href="http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/">Java 8 with streams</a>, <a href="https://dzone.com/articles/exploring-erlang-with-mapreduc">Erlang</a>, <a href="http://jtra.cz/stuff/lisp/sclr/map.html">Map</a> / <a href="http://jtra.cz/stuff/lisp/sclr/reduce.html">Reduce</a> functions in Common Lisp, <a href="https://www.sitepoint.com/map-reduce-functional-javascript/">JavaScript</a>). In general, the two functions in MapReduce have the following responsibilities:
+</p>
+<ul class="org-ul">
+<li>map() applies a given function element-wise to a list of elements and returns a list of results
+</li>
+<li>reduce() aggregates the list of results from map() into a single result
+</li>
+</ul>
+
+<p>
+It turns out, that a lot of data analysis problems fit (or can be rephrased to fit) into this algorithm. In addition, the algorithm can be parallelized, i.e. map() can be called in parallel where each instance of the function works on a subset of the input. Then, the reduce() function takes the responsibility to combine the results from the mappers and produces an aggregate result.
+</p>
+
+<div class="info">
+<p>
+<b>Analog MapReduce</b> (inspiration for this example comes from <a href="http://ksat.me/map-reduce-a-really-simple-introduction-kloudo/">here</a>)
+</p>
+
+<p>
+You work in a big company which plans to sell advertisement space on blogging websites. Your CEO is smart and knows that advertisements works best if they are seen by people who are interested in the advertised product or service. He therefore assigns you the task to collect statistics on the terms used on the top-100 blogging websites. By knowing which terms are used most on a website, you CEO thinks he can deduce what the site is about and show there relevant advertisements for readers. Each of the top-100 blogging sites has around 1000 articles, so you need to analyze 100.000 webpages in total. This sounds like a feasible task. However, your CEO is also a bit paranoid and tells you to not use any computer for the analysis. He thinks Google might spy on him. All you have is 10.000 people with their phones to access the web, pens, a lot of paper and a weeks time. 
+</p>
+
+<p>
+After some thinking you divide your workforce into 4 groups:
+</p>
+<ul class="org-ul">
+<li>The Mappers (9899)
+</li>
+<li>The Grouper (1)
+</li>
+<li>The Reducers (100)
+</li>
+<li>The Master (1, you)
+</li>
+</ul>
+
+<p>
+You turn now to each group and explain them their task.
+</p>
+
+<p>
+<i>Mappers</i>: Since you need to analyze 100.000 pages and have 9899 Mappers, each Mapper will get at most 11 web-pages randomly assigned (some Mappers will get lucky and fewer pages to read). The task of the Mapper is easy: in a long list, he notes down each term he has read on the assigned websites. In addition, he filters out any term that is not really useful for the analysis, so called stop-words (e.g. &ldquo;and&rdquo;, &ldquo;the&rdquo;, &ldquo;when&rdquo;, &ldquo;to&rdquo;, etc.). These stop-words are on a list where the Mapper can look them up. Eventually, the Mapper produces a list looking as follows:
+</p>
+<ul class="org-ul">
+<li>1123, banana
+</li>
+<li>1123, fruit
+</li>
+<li>1123, banana
+</li>
+<li>1123, apple
+</li>
+<li>1124, banana
+</li>
+<li>89322, chemistry
+</li>
+<li>89322, experiment
+</li>
+<li>89323, chemistry
+</li>
+<li>&#x2026;
+</li>
+</ul>
+
+<p>
+The first value is a web-page id (which is somewhere mapped to one of the top-100 blogs) and the second value is the encountered term on the web-page. It takes the 9899 Mappers 3 days to complete their task and they hand a pile of papers to the Grouper.
+</p>
+
+<p>
+<i>Grouper</i>: The grouper has 100 piles of empty papers in front of him, each representing a blog. He knows the mapping between web-page id and the top-100 blogs. The Grouper scans through the lists he received from the Mappers, and, based on the first value in the list, chooses the correct pile (from the 100) where he notes down the list item (he doesn&rsquo;t really need anymore the web-page id, so he discards it). Eventually, he ends up with something as follows:
+</p>
+
+<p>
+Pile 0:
+</p>
+<ul class="org-ul">
+<li>banana 
+</li>
+<li>fruit 
+</li>
+<li>cheese 
+</li>
+<li>banana
+</li>
+<li>venison
+</li>
+<li>chocolate
+</li>
+<li>cheese
+</li>
+<li>&#x2026;
+</li>
+</ul>
+
+<p>
+Pile 1:
+</p>
+<ul class="org-ul">
+<li>chemistry
+</li>
+<li>experiment
+</li>
+<li>chemistry
+</li>
+<li>explosion
+</li>
+<li>infirmary
+</li>
+<li>reaction
+</li>
+<li>school
+</li>
+<li>experiment
+</li>
+<li>&#x2026;
+</li>
+</ul>
+
+<p>
+Pile 99:
+</p>
+<ul class="org-ul">
+<li>&#x2026;
+</li>
+</ul>
+
+<p>
+The Grouper finishes after 2 days of mind numbing work. This task was not very difficult but quite boring after the first 5 minutes. He hands over his 100 piles to the Reducers.
+</p>
+
+<p>
+<i>Reducers</i>: Each Reducer gets one pile from the Grouper, representing exactly one blog. His task is to count the term occurrences, sum them up and sort the resulting list of terms in descending order. The Reducer responsible for Pile 0 produces the following result:
+</p>
+
+<p>
+Pile 0:
+</p>
+<ul class="org-ul">
+<li>cheese, 15
+</li>
+<li>banana, 11
+</li>
+<li>fruit, 10
+</li>
+<li>chocolate, 7
+</li>
+<li>venison, 3
+</li>
+<li>garlic, 1
+</li>
+<li>&#x2026;
+</li>
+</ul>
+
+<p>
+The Reducers are done with their job in less than a day and hand you over their results. You send the CEO a spreadsheet with the top-100 blogs and each of their top-10 used terms. Your CEO is very pleased with the result and starts to sell food-delivery service advertisements to the blog Pile 0, insurance company ads to blog Pile 1, and so on.
+</p>
+
+<p>
+The next day, your CEO wants you to repeat the analysis for the 2.500.000 tweets of the top-1000 followed Tweeteronis. You decide that the advertisement business is not good for your mental health and quit your job.
+</p>
+
+</div>
+
+<p>
+The analogue MapReduce process illustrated above is a good metaphore to explain the basic idea of the algorithm. We discuss the 3 phases of the algorithm in more detail to understand the power of MapReduce. The figure below illustrates the overall MapReduce process. Input/output data is shown in orange, dashed boxes. Workes nodes executing the computation are shown in blue (map) and green (reduce). Key/value pairs that are passed between workers nodes are shown in white, solid boxed.
+</p>
+
+
+<div class="figure">
+<p><img src="./images/map_reduce_process.png" alt="map_reduce_process.png" />
+</p>
+</div>
+
+<p>
+The input is split so that each Mapper receives a part of the input. The developer has full control over how the input is split. This is important as the number of splits determines how many Mappers are created. Each phase uses key-value pairs as input and output. 
+</p>
+
+<p>
+<i>MAP</i>: First, input splits are translated into records. The purpose here is to parse the data into records, but not parse the record itself. Depending on the format of the raw data, the developer has to choose an appropriate record reader or implement one based on the nature of the data. Then, the data is passed to the mapper in the form of key/value pairs (k1, v1). Usually the key in this phase is positional information (e.g. a line number and length of the record, or a file name) and the value is the chunk of data that composes a record. In the map function, code provded by the developer is executed on each key/value pair from the record to produce a list of new key/value pairs (k2, v2). <b>Deciding on the content of the key and value here is central to the MapReduce algorithm</b>. The key is what the data will be <b>grouped</b> on and the value is the information pertinent to the analysis in the reducer.
+</p>
+
+<p>
+<i>SHUFFLE</i>: Based on the output keys from the map phase (k2), the data is redistributed such that all data belonging to one key is grouped together. The mechanics of the shuffle phase are to a large extent out of the control of the developer and are managed by the framework that implements MapReduce. The developer can however provide a custom comparator to control how the keys are grouped. 
+</p>
+
+<p>
+<i>REDUCE</i>: The reduce function takes the grouped data as input and runs the code provided by the developer once per key grouping. A wide range of processing can happen in this function, such as aggregation, filtering, and combination. Once the reduce function is done, it sends zero or more key/value pairs to the output. 
+</p>
+
+<p>
+While the principal idea behind MapReduce is simple, the technical implementation to achieve reliable, fault-tolerant, efficient parallelism is very complex. You can learn more about one of these implementations, Apache Hadoop, in this <a href="../Provisioning/Sprint-Hadoop.html">sprint</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Clone detection with MapReduce</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+In the previous two sprints of this assignment, we have gradually improved our clone detection algorithm. In this last sprint, we are going to express the detection algorithm as a series of MapReduce jobs. If you look at the implementation (see <a href="#learning">Experiential Learning</a>), you will see that we did not change the core idea of the detection algorithm but tried to exploit the properties of the MapReduce programming model in order to solve the problem at hand. The figure below illustrates the major components and data structures we have used in the previous sprint to implement the detection algorithm.
+</p>
+
+
+<div class="figure">
+<p><img src="./images/logic_hash_detection.png" alt="logic_hash_detection.png" />
+</p>
+</div>
+
+<p>
+The Chunker produces two hash tables of the same data (source files). One hash table is indexed by the content of the files, the other is indexed by the file names. The by-content hash table identifies clones (of the predefined minimum clone size), while the the by-file hash can be used to lookup file chunks by file name. The Expander uses these two hash tables to expand the identified clones (of size n) to their maximum size. Then, the Expander stores them in a set to filter out duplicate clones.
+</p>
+
+<p>
+The image below illustrates how the three MapReduce jobs (dashed lines and boxes) map conceptually to the clone detection algorithm.
+</p>
+
+
+<div class="figure">
+<p><img src="./images/logic_hadoop_detection.png" alt="logic_hadoop_detection.png" />
+</p>
+</div>
+
+<p>
+We have designed the HadoopDetector as a batch process where one MapReduce job provides input for the next. 
+</p>
+
+<p>
+<i>MR1 - Chunker</i>: As the Chunker in the FastHashDetector, this job reads the source files, parses them and creates chunks. The map() function has in this job two outputs: 
+</p>
+<ol class="org-ol">
+<li>The first output is sent to the reduce() function has the <i>chunk hash</i> as key and the <i>chunk</i> (with its location information) as value.
+</li>
+<li>The second output is written to HDFS with the <i>file name</i> as key and its <i>chunks</i> as value. 
+</li>
+</ol>
+
+<p>
+Recall from the introduction on MapReduce that there is a shuffle() between the map() and reduce() that groups all key-value pairs emitted by map together, based on their key. This means that in our reduce() function, which receives a <i>key</i> and a <i>list of values</i>, we need only to check if the list contains more than 1 element. If yes, we have detected a clone of size n and the list contains the corresponding chunks. We write the key-value pairs, which logically correspond to the by-content hash in the FastHashDector, to HDFS which is then read by a later job, MR3 - Expander.
+</p>
+
+<p>
+<i>MR2 - Indexer</i>: Recall that the expansion algorithm iterates over all identified clones and then expands them by looking at adjacent chunks. The purpose of the Indexer is to provide a means to find those adjacent chunks quickly. This MapReduce job is special as we do not need to implement any map/reduce functionality. All we do is to read in the second output produced by the mapper from MR1 (a Hadoop sequence file [<a href="#4">4</a>]) and write that data to a Hadoop map file [<a href="#5">5</a>]. This will produce a data structure that logical corresponds to the by-file hash used in the FastHashDetector.
+</p>
+
+<p>
+<i>MR3 - Expander</i>: The last MapReduce job uses the data stored to the HDFS (clones of size n, file index) to find the largest possible clones. While the algorithm we have developed for the FastHashDetector does not change, we needed to adapt how the data is fed to the algorithm in the map() function. The reduce() function is then again trivial as the shuffle() groups equivalent clones together and we can simply ignore the list passed to the reduce() function and emit the clones, writing them to HDFS. 
+</p>
+
+<p>
+Now that we have a theoretical overview of the HadoopDetector, lets get to work and hadoop.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Further Reading</h3>
+<div class="outline-text-3" id="text-4-1">
+<ol class="org-ol">
+<li><a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html">HDFS Architecture</a> <a id="1" name="1"></a>
+</li>
+<li><a href="http://blog.cloudera.com/blog/2009/02/the-small-files-problem/">The small file problem</a> <a id="2" name="2"></a>
+</li>
+<li><a href="https://blog.matthewrathbone.com/2016/09/01/a-beginners-guide-to-hadoop-storage-formats.html">Hadoop storage formats</a> <a id="3" name="3"></a>
+</li>
+<li><a href="http://hadooped.blogspot.se/2013/09/sequence-file-construct-usage-code.html">Hadoop sequence files</a> <a id="4" name="4"></a>
+</li>
+<li><a href="http://hadooped.blogspot.se/2013/09/map-file-construct-usage-code-samples.html">Hadoop map files</a> <a id="5" name="5"></a>
+</li>
+<li>YARN memory configuration (source <a href="https://hortonworks.com/blog/how-to-plan-and-configure-yarn-in-hdp-2-0/">1</a> and <a href="http://www.bigdatanews.datasciencecentral.com/profiles/blogs/hadoop-yarn-explanation-and-container-memory-allocations">2</a>) <a id="6" name="6"></a>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning <a id="learning" name="learning"></a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+The version of ClonyMcCloneface used in this sprint implements the ideas presented in the <a href="#intro">introduction</a>. Again, your task is to complete some of the missing code, run the detector on different data sets and report on the observed results.
+</p>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Setup your development environment</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+The same <a href="./Sprint-The-Clone-Wars.html#setup">instructions</a> as for the first sprint apply. If you did not do so yet, we highly recommend you to complete the <a href="../Provisioning/Sprint-Hadoop.html">Hadoop sprint</a> before continuing with this assignment.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Get ClonyMcCloneface</h3>
+<div class="outline-text-3" id="text-5-2">
+<ol class="org-ol">
+<li>Download the version for ClonyMcCloneface for this sprint.
+<div class="org-src-container">
+
+<pre class="src src-bash">$ wget ftp://custsrv1.bth.se/FTP/ClonyMcCloneface/Return-of-the-Jedi.tar.gz
+</pre>
+</div>
+</li>
+<li>Unpack the archive (it contains an eclipse project file, so you can import it directly into eclipse).
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Getting the data into HDFS</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Before we can start with any analysis we need to store the data in Hadoops&rsquo; Distributed Filesystem (HDFS). HDFS&rsquo;s design documentation [<a href="#1">1</a>] discusses its assumptions and goals, one of which is very relevant for our analysis goal: file size. While HDFS exposes a filesystem namespace and allows user data to be stored in files, internally a file is stored in one or more <i>blocks</i>. These <i>blocks</i> are stored in a set of <i>DataNodes</i> which is, in general, one machine in the cluster of the distributed file system. <i>Blocks</i> are replicated among the <i>DataNodes</i> in order to achieve fault tolerance. The <i>NameNode</i> in an HDFS cluster manages the filesystem namespace (e.g. for looking up <i>DataNodes</i> and <i>blocks</i>) and regulates access to files by clients. 
+</p>
+
+<p>
+Now, how is all this related to file size? Each file is stored in one or more <i>blocks</i>. Having many small (&ldquo;small&rdquo; in this context means usually less than 64MB) files implies that there will be many blocks of small size, which in turn increases the overhead for the <i>NameNode</i>. This is known as the <b>small file problem</b> [<a href="#2">2</a>] (if you ask google, you&rsquo;ll find a lot more resources and discussions on this).
+</p>
+
+<div class="info">
+<p>
+<b>Checkpoint question</b>
+</p>
+
+<ol class="org-ol">
+<li>What is the average file size in the Qualitas corpus (only consider java files)?
+</li>
+</ol>
+
+</div>
+
+<p>
+The most common advice to solve the small file problem is to not using small files. This is a viable option if you are in control of data collection. In our case, an additional problem arises: our analytical goal requires us to differentiate between files (we want to identify clones in files). We could concatenate all files into one big one, and define a marker that designates file boundaries. In the analysis, we would then split the large file by this marker. This is however a clunky workaround and requires us to check that <i>blocks</i> are split at those markers.
+</p>
+
+<p>
+In order to experience the small file problem first hand, copy the Qualitas corpus, unpacked, to HDFS.
+</p>
+
+<div class="info">
+<p>
+<b>Checkpoint question</b>
+</p>
+
+<ol class="org-ol">
+<li value="2">What is the transfer rate (MB/s) when copying data from your local file system to HDFS (use the Qualitas corpus as a benchmark)?
+</li>
+</ol>
+
+</div>
+
+<p>
+Trying to copy the Qualitas corpus, which consists of many small files, should illustrate you that transfer of data to HDFS can be a costly (time-wise) operation. Luckily, there is an alternative: create a sequence file [<a href="#3">3</a>] on your local file system, transfer it to HDFS and then use that as input for your MapReduce job. A sequence file is, in essence, nothing else than a binary key-value list that can be compressed and split in order to be distributed to worker nodes.
+</p>
+
+<p>
+We have implemented a simple LocalToSequence converter in package <code>se.bth.serl.clony.hadoop.localtoseq</code>. Study the source code in order to understand its mechanics and then use it to convert the Qualitas corpus into a sequence file.
+</p>
+
+<div class="info">
+<p>
+<b>Checkpoint questions</b>
+</p>
+
+<ol class="org-ol">
+<li value="3">What is the key and what is the value in the sequence file?
+</li>
+<li>What is the size of the Qualitas corpus, stored in a sequence file?
+</li>
+<li>What is the transfer rate (MB/s) when copying the sequence file from your local file system to HDFS? 
+</li>
+</ol>
+
+</div>
+
+<p>
+Now you have experienced and solved the small files problem in Hadoop.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Local Hadoop</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+As in the previous sprints, you need to complete some missing logic in the detector, marked again as <code>TODOs</code> in the code. The implementation tasks focus on the input/output data of the map() and reduce() functions. 
+</p>
+
+<p>
+Next, create a sequence file from a subset of the Qualitas corpus in order to test your implementation and Hadoop environment. Then, export the project as a jar file and run the clone detector. <b>Note</b>: You might need to adapt some of the Hadoop configurations in order to cater for your particular environment, especially memory parameters [<a href="#6">6</a>]. 
+</p>
+
+<div class="info">
+<p>
+<b>Checkpoint questions</b>
+</p>
+
+<ol class="org-ol">
+<li value="6">In case you encounter any challenges in running the HadoopDetector, briefly describe them and the identified solutions.
+</li>
+<li>Compare the FastHashDetector with the HadoopDetector in terms of memory use and runtime. Use both small and large data sets as input.
+</li>
+<li>How does the split size for MapReduce job 1 and 3 influence the runtime of the detector? Experiment with different values (see class <code>HadoopDetector</code>) and describe the behavior. 
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Do we really need three MapReduce jobs?</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+Looking at the class <code>HadoopDetector</code>, you will notice that the secondary output of the first MapReduce job is a sequence file:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java">MultipleOutputs.addNamedOutput(chunkingJob, chunkingConf.get(CONFIG_CHUNKSNAMEDOUTPUT), SequenceFileOutputFormat.class, Text.class, ChunkArrayWritable.class);
+</pre>
+</div>
+
+<p>
+The Indexer (MapReduce job 2) converts this sequence file into a map file. 
+</p>
+
+<div class="info">
+<p>
+<b>Checkpoint question</b>
+</p>
+
+<ol class="org-ol">
+<li value="9">Is this second MapReduce (Indexer) job really necessary? Try to rewrite the application to use only 2 MapReduce jobs. What happens if you write immediately to a map file in the ChunkerMapper? 
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-6" class="outline-3">
+<h3 id="sec-5-6"><span class="section-number-3">5.6</span> Distributed Hadoop</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+The last task in this assignment in to run the HadoopDetector on a distributed Hadoop cluster. 
+</p>
+
+<div class="info">
+<p>
+<b>Checkpoint question</b>
+</p>
+
+<ol class="org-ol">
+<li value="10">What did you need to change (code and/or configuration) when transitioning from running the HadoopDetector on a local installation to running it on a distributed cluster?
+</li>
+<li>Compare the runtime between local and distributed clone detection?
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+
+<ul class="org-ul">
+<li>You have answered all checkpoint questions.
+</li>
+<li>You have compiled the answers into a report and sent it to the teacher.
+</li>
+<li>You have received a passing grade from the teacher.
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Michael Unterkalmsteiner</p>
+<p class="email">Email: <a href="mailto:Michael.Unterkalmsteiner@bth.se">Michael.Unterkalmsteiner@bth.se</a></p>
+<p class="date">Created: 2017-08-24 Thu 08:52</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
