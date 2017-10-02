@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Sprint: Enter the Cloud</title>
-<!-- 2017-08-23 Wed 12:51 -->
+<!-- 2017-10-02 Mon 14:20 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Mikael Svahnberg" />
@@ -298,9 +298,8 @@ Copy/paste and SAVE the token in a safe place. You will never find it again.
 </div>
 
 <p>
-<b>Generate SSH key:</b> You need an SSH key to allow vagrant to login to your new droplet. Run <code>ssh-keygen</code>, and when asked where to save the generated key answer <code>/home/youruser/.ssh/digitalocean/api_id_rsa</code>. Hit <code>Enter</code> when asked for a passphrase.
+<b>Generate SSH key:</b> You need an SSH key to allow vagrant to login to your new droplet. Run <code>ssh-keygen</code>, and hit <code>Enter</code> when asked for a passphrase.
 </p>
-
 <p>
 <b>Create Vagrantfile:</b> 
 </p>
@@ -324,13 +323,13 @@ Copy/paste and SAVE the token in a safe place. You will never find it again.
 <pre class="src src-ruby">config.vm.hostname = 'vagrant-test'
 
 config.vm.provider :digital_ocean do |provider, override|
-  override.ssh.private_key_path = '~/.ssh/digitalocean/api_id_rsa'
+  override.ssh.private_key_path = '~/.ssh/id_rsa'
   override.vm.box = 'digital_ocean'
-  override.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+  override.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
 
   provider.token = 'YOUR-TOKEN'
   provider.image = 'ubuntu-14-04-x64'
-  provider.region = 'nyc2'
+  provider.region = 'nyc1'
   provider.size = '512mb'
   provider.setup = false
 end
@@ -373,6 +372,40 @@ If you don&rsquo;t, your droplet will keep running and cost you money.
 </p>
 
 </div>
+
+<div class="warning">
+<p>
+<b>Error: No host IP was given to the Vagrant core NFS helper.</b>
+</p>
+
+<p>
+Welcome to the wonderful world of open sores development. This <i>used</i> to work as specified, but in an update the developers of the vagrant-digitalocean plugin, in their wisdom, removed their own handling of nfs mounts and leaned on the preexisting one in Vagrant. Naturally, this caused a regression and since 2016 NFS no longer works with DigitalOcean. The solution is to fall back to rsync:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">config.vm.synced_folder ".", "/vagrant", type: "rsync"
+</pre>
+</div>
+
+<p>
+Of course, this only syncs at <code>vagrant up</code>, <code>vagrant reload</code>, or by manually executing <code>vagrant rsync</code>, and only in one direction (<code>host =&gt; guest</code>). For the adventurous, there are of course workarounds for this.
+</p>
+
+<p>
+Another &ldquo;solution&rdquo; used to close issues about this is to simply say that &ldquo;oh wait. NFS sync was not that important in the first place. I&rsquo;ll just switch it off.&rdquo;:
+</p>
+
+<p>
+<code>override.nfs.functional = false</code>
+</p>
+
+<p>
+I have the luxury of being able to rant on a public web page about how open source developers apparently hate their users. For the rest of you, please use the course discussion forum to ventilate.
+</p>
+
+</div>
+
 
 <p>
 <b>Summary:</b> You have now created a Vagrant configuration that runs on a cloud provider (DigitalOcean).
@@ -636,7 +669,7 @@ You may also have:
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-08-23 Wed 12:51</p>
+<p class="date">Created: 2017-10-02 Mon 14:20</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
