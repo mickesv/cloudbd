@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Sprint: Setting up Hadoop</title>
-<!-- 2017-08-30 Wed 11:19 -->
+<!-- 2017-10-09 Mon 09:09 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Mikael Svahnberg" />
@@ -493,7 +493,7 @@ While still in your virtual machine, it is time to install Hadoop. I prefer to s
 
 <pre class="src src-bash">#!/usr/bin/env bash
 
-export HADOOP_VER=hadoop-2.8.0
+export HADOOP_VER=hadoop-2.8.1
 export HADOOP_ROOT_ROOT=/usr/local
 export HADOOP_ROOT=$HADOOP_ROOT_ROOT/hadoop
 export HADOOP_HOME=$HADOOP_ROOT
@@ -562,7 +562,7 @@ Use one of the built-in example mapreduce jobs to further test that everything w
 
 cp $HADOOP_HOME/*.txt input
 
-hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar wordcount input output
+hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar wordcount input output
 
 cat output/*
 </pre>
@@ -575,7 +575,7 @@ For a list of the included examples, run the hadoop command without any addition
 
 <div class="org-src-container">
 
-<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar
+<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar
 </pre>
 </div>
 
@@ -731,7 +731,7 @@ Now you are at a point where you can re-run your previous example:
 
 <div class="org-src-container">
 
-<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar wordcount input output
+<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar wordcount input output
 
 hdfs dfs -cat output/*
 </pre>
@@ -826,7 +826,7 @@ Now you are (again) at a point where you can re-run your previous example:
 
 <div class="org-src-container">
 
-<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar wordcount input output
+<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar wordcount input output
 
 hdfs dfs -cat output/*
 </pre>
@@ -1183,7 +1183,7 @@ Now you are (again) at a point where you can re-run your previous example. First
 
 <div class="org-src-container">
 
-<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar wordcount input output
+<pre class="src src-bash">hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar wordcount input output
 
 hdfs dfs -cat output/*
 </pre>
@@ -1295,8 +1295,8 @@ You may also have:
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-08-30 Wed 11:19</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2017-10-09 Mon 09:09</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
